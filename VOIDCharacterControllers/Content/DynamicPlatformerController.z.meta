@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "DynamicPlatformerController",
+		uint64 ResourceId = 58025472a297be7d,
+	},
+},

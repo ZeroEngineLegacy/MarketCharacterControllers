@@ -22,8 +22,8 @@ Level =
 		{
 			bool Active = true,
 			bool WakeUpOnChange = false,
-			float Drag = 0.7,
-			float AngularDrag = 0.1,
+			float Drag = 0.699999988,
+			float AngularDrag = 0.100000001,
 		},
 		GridDraw = 
 		{
@@ -53,17 +53,17 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 12.9409533, 48.2962952],
+			Vec3 Translation = [0, 12.9409523, 48.2962914],
 			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [-0.130526185, -1.10221432e-08, -2.85274071e-09, 0.991444945],
+			Quat Rotation = [-0.130526185, -1.10221432e-08, -2.85274093e-09, 0.991444945],
 		},
 		Camera = 
 		{
-			PerspectiveMode PerspectiveMode = Perspective,
 			Facing Facing = NegativeZ,
-			float FieldOfView = 45,
 			float NearPlane = 0.5,
 			float FarPlane = 500,
+			PerspectiveMode PerspectiveMode = Perspective,
+			float FieldOfView = 45,
 			float Size = 20,
 		},
 		CameraViewport = 
@@ -71,9 +71,10 @@ Level =
 			bool RenderInEditor = true,
 			bool RenderInGame = false,
 			bool RenderToViewport = true,
+			bool ForwardViewportEvents = false,
 			uint RenderOrder = 0,
-			Vec2 Offset = [0, 0],
-			Vec2 Size = [1, 1],
+			Vec2 NormalizedSize = [1, 1],
+			Vec2 NormalizedOffset = [0, 0],
 			CogPath Camera = 
 			{
 				string Path = ".",
@@ -89,7 +90,24 @@ Level =
 				CogPathPreference PathPreference1 = SpaceRelative,
 				CogPathPreference PathPreference2 = Absolute,
 			},
+			CogPath Renderer = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 2,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
 			Vec2 Resolution = [1280, 720],
+			ViewportScaling ViewportScaling = Fill,
+			Vec4 MarginColor = [0, 0, 0, 1],
 		},
 		DefaultRenderer = 
 		{
@@ -122,49 +140,133 @@ Level =
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
-    Camera = 
-    {
-      PerspectiveMode PerspectiveMode = Perspective,
-      Facing Facing = NegativeZ,
-      float FieldOfView = 45,
-      float NearPlane = 0.5,
-      float FarPlane = 100,
-      float Size = 20,
-    },
-    CameraViewport = 
-    {
-      bool RenderInEditor = false,
-      bool RenderInGame = true,
-      bool RenderToViewport = true,
-      uint RenderOrder = 0,
-      Vec2 Offset = [0, 0],
-      Vec2 Size = [1, 1],
-      CogPath Camera = 
-      {
-        string Path = ".",
-        bool ErrorOnResolveToNull = false,
-        bool ErrorOnPathCantCompute = false,
-        bool ErrorOnDirectLinkFail = false,
-        bool UpdateCogOnPathChange = true,
-        bool UpdatePathOnCogChange = true,
-        bool UpdateCogOnInitialize = true,
-        bool ResolvedNullErrorOccurred = false,
-        uint ResolvedCog = 3,
-        CogPathPreference PathPreference0 = CogRelative,
-        CogPathPreference PathPreference1 = SpaceRelative,
-        CogPathPreference PathPreference2 = Absolute,
-      },
-      Vec2 Resolution = [1280, 720],
-    },
-    DefaultRenderer = 
-    {
-      Vec4 ClearColor = [0, 0, 0, 1.0],
-      bool DrawDebug = false,
-    },
+		Camera = 
+		{
+			Facing Facing = NegativeZ,
+			float NearPlane = 0.5,
+			float FarPlane = 100,
+			PerspectiveMode PerspectiveMode = Perspective,
+			float FieldOfView = 45,
+			float Size = 20,
+		},
+		CameraViewport = 
+		{
+			bool RenderInEditor = false,
+			bool RenderInGame = true,
+			bool RenderToViewport = true,
+			bool ForwardViewportEvents = false,
+			uint RenderOrder = 0,
+			Vec2 NormalizedSize = [1, 1],
+			Vec2 NormalizedOffset = [0, 0],
+			CogPath Camera = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 3,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			CogPath Renderer = 
+			{
+				string Path = ".",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 3,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			Vec2 Resolution = [1280, 720],
+			ViewportScaling ViewportScaling = Fill,
+			Vec4 MarginColor = [0, 0, 0, 1],
+		},
+		DefaultRenderer = 
+		{
+			Vec4 ClearColor = [0, 0, 0, 1],
+			bool DrawDebug = false,
+		},
 		SoundListener = 
 		{
 			bool Active = true,
-			float Volume = 1,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 4,
+		},
+		Named = 
+		{
+			string Name = "Cube",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, 0, 0],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Model = 
+		{
+			bool Visible = true,
+			bool ViewCulling = true,
+			bool VisibilityEvents = true,
+			string Material = "4de020863e85bb61:DefaultMaterial",
+			string Mesh = "4de0354322b345ae:Cube",
+		},
+		RigidBody = 
+		{
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+			Enum DynamicState = Kinematic,
+			bool AllowSleep = true,
+			bool Asleep = false,
+			bool RotationLocked = false,
+			Enum Mode2D = InheritFromSpace,
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsEvents = true,
+			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
+			string CollisionGroup = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 HalfSize = [0.5, 0.5, 0.5],
+		},
+		SweptController = 
+		{
+			Vec3 WorldUp = [0, 1, 0],
+			bool LockZAxis = false,
+			bool ForwardEvents = false,
+			float Gravity = 10,
+			float JumpSpeed = 5,
+			float JumpCancelFactor = 0.5,
+			float MaxMoveSpeed = 10,
+			float MaxFallSpeed = 50,
+			float GroundAcceleration = 50,
+			float AirAcceleration = 10,
+			float GroundDeceleration = 50,
+			float AirDeceleration = 10,
+			float MaxGroundSlope = 45,
+			float MaxCeilingSlope = 45,
+			float GroundSnapDistance = 0.100000001,
+			Vec3 ControllerVelocity = [0, 0, 0],
+			bool Grounded = true,
+			bool Jumping = false,
+			float GroundTraction = 1,
+			float AirTraction = 1,
 		},
 	},
 },
