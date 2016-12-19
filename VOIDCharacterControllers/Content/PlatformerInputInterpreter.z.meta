@@ -1,8 +1,0 @@
-TextContent = 
-{
-	ZilchScriptBuilder = 
-	{
-		string Name = "PlatformerInputInterpreter",
-		uint64 ResourceId = 580254f6c781898c,
-	},
-},

@@ -1,0 +1,53 @@
+class CharMoveEvent : ZilchEvent
+{
+    sends CharMoveEvent : CharMoveEvent;
+    //Oriented left or right based on ground slope.
+    var MoveDir : Real;
+    var SprintKeyDown : Boolean = false;
+}
+
+class CharJumpEvent : ZilchEvent
+{
+    sends CharJumpEvent : CharJumpEvent;
+}
+
+class KeyboardInterpreter2D : ZilchComponent
+{
+    [Property]
+    var LeftKey : Keys = Keys.A;
+    
+    [Property]
+    var RightKey : Keys = Keys.D;
+    
+    [Property]
+    var JumpKey : Keys = Keys.Space;
+    
+    [Property]
+    var SprintKey : Keys = Keys.Shift;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var moveDir = 0.0;
+        if(Zero.Keyboard.KeyIsDown(this.LeftKey))
+            moveDir += 1;
+        if(Zero.Keyboard.KeyIsDown(this.RightKey))
+            moveDir += -1;
+        
+        var moveEvent = CharMoveEvent();
+        moveEvent.MoveDir = moveDir;
+        
+        if(Zero.Keyboard.KeyIsDown(this.SprintKey))
+            moveEvent.SprintKeyDown = true;
+            
+        //Console.WriteLine("Sent");
+        this.Owner.DispatchEvent(Events.CharMoveEvent, moveEvent);
+        
+        if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
+            this.Owner.DispatchEvent(Events.CharJumpEvent, CharJumpEvent());
+    }
+}

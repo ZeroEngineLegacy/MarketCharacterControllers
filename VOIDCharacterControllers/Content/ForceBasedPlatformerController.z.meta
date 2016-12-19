@@ -2,7 +2,7 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "DynamicPlatformerController",
+		string Name = "ForceBasedPlatformerController",
 		uint64 ResourceId = 58025472a297be7d,
 	},
 },
