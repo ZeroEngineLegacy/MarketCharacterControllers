@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "VelocityPlatformerController",
+		uint64 ResourceId = 580f1a23943822c6,
+	},
+},

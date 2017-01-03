@@ -53,9 +53,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-10.6503019, 15.5287275, 15.9669609],
+			Vec3 Translation = [0.615083516, 1.7894212, 24.7263336],
 			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [-0.325322002, -0.269500822, -0.0972919837, 0.901148796],
+			Quat Rotation = [-0.0427421704, 0.0156926624, 0.000671434274, 0.9989627],
 		},
 		Camera = 
 		{
@@ -118,8 +118,8 @@ Level =
 		{
 			ControlMode ControlMode = Orbit,
 			float LookDistance = 24.8292828,
-			float VerticalAngle = 0.692895472,
-			float HorizontalAngle = 0.581195116,
+			float VerticalAngle = 0.0855209529,
+			float HorizontalAngle = -0.0314153619,
 			Vec3 LookTarget = [-0.161958814, -0.331415325, -7.07971104e-09],
 			float MoveSensitivity = 1,
 		},
@@ -262,17 +262,9 @@ Level =
 		},
 		GroundDetection = 
 		{
-			float MaxGroundSlope = 45,
+			float MaxGroundSlope = 0,
 			bool DebugPrint = false,
 			bool DrawDebug = false,
-		},
-		VelocityBasedPlatformerController = 
-		{
-			float GroundVelocity = 5,
-			float SprintModifier = 2,
-			float JumpVelocity = 5,
-			int MaxJumpCount = 2,
-			float MaxVelocity = 25,
 		},
 	},
 	Cog = 

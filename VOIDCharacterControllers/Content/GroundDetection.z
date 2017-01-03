@@ -1,3 +1,12 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2017                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: GroundDetection                                                                                   */
+/* Brief: Performs basic ground detection for a 2D platformer character.                                    */
+/************************************************************************************************************/
+
 class GroundDetection : ZilchComponent
 {
     [Dependency]
@@ -96,16 +105,14 @@ class GroundDetection : ZilchComponent
             cosineOfAngle = Math.Clamp(cosineOfAngle, -1.0, 1.0);
             var angle = Math.ACos(cosineOfAngle);
             
-            //Debug print if desired
             if(this.DebugPrint)
-                //Print ground angle
                 Console.WriteLine("Ground Angle: `Math.ToDegrees(angle)`");
             
             //Check the ground angle against MaxGroundSlope
             if(angle > this.MaxGroundSlopeRad)
                 //Skip this contact if angle is invalid
                 continue;
-            //Console.WriteLine("HI");
+            
             //Check if middle cast, and left or right cast hit this contact
             if(castResultM.ObjectHit == contact.OtherObject &&
                (castResultL.ObjectHit == contact.OtherObject ||
@@ -117,9 +124,7 @@ class GroundDetection : ZilchComponent
                 this.Ground = contact.OtherObject;
                 this.GroundNormal = normal;
                 
-                //Debug print if desired
                 if(this.DebugPrint)
-                    //Print "OnGround"
                     Console.WriteLine("OnGround");
                 
                 //Stop searching we found our ground
@@ -134,9 +139,7 @@ class GroundDetection : ZilchComponent
                 this.Ground = contact.OtherObject;
                 this.GroundNormal = normal;
                 
-                //Debug print if desired
                 if(this.DebugPrint)
-                    //Print "PartiallyOnGround"
                     Console.WriteLine("PartiallyOnGround");
                 
                 //Stop searching we found our ground
@@ -144,9 +147,7 @@ class GroundDetection : ZilchComponent
             }
         }
         
-        //Debug print if desired
         if(this.DebugPrint)
-            //Print "Not On Ground"
             Console.WriteLine("Not On Ground");
     }
     

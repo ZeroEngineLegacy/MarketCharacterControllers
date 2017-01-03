@@ -1,15 +1,11 @@
-class CharMoveEvent : ZilchEvent
-{
-    sends CharMoveEvent : CharMoveEvent;
-    //Oriented left or right based on ground slope.
-    var MoveDir : Real;
-    var SprintKeyDown : Boolean = false;
-}
-
-class CharJumpEvent : ZilchEvent
-{
-    sends CharJumpEvent : CharJumpEvent;
-}
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2017                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: KeyboardInterpreter2D                                                                             */
+/* Brief: A simple 2D input interpreter for a 2D side-scrolling platformer.                                 */
+/************************************************************************************************************/
 
 class KeyboardInterpreter2D : ZilchComponent
 {
@@ -50,4 +46,17 @@ class KeyboardInterpreter2D : ZilchComponent
         if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
             this.Owner.DispatchEvent(Events.CharJumpEvent, CharJumpEvent());
     }
+}
+
+class CharMoveEvent : ZilchEvent
+{
+    sends CharMoveEvent : CharMoveEvent;
+    //Oriented left or right based on ground slope.
+    var MoveDir : Real;
+    var SprintKeyDown : Boolean = false;
+}
+
+class CharJumpEvent : ZilchEvent
+{
+    sends CharJumpEvent : CharJumpEvent;
 }
