@@ -68,13 +68,19 @@ class VelocityPlatformerController : ZilchComponent
             //The movement force should be applied parallel to walkable surface.
             //To do this we rotate the surface normal by 90 or -90 degrees to get
             //a direction for the velocity.
+            var dir = Real3();
             var angle = 0.0;
             if(event.MoveDir == -1)
+            {
                 angle = -Math.Pi/2;
+                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+            }
             else if(event.MoveDir == 1)
+            {
                 angle = Math.Pi/2;
+                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+            }
             
-            var dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
             var newVel = dir * this.MoveSpeed;
             
             //Check if sprint button down
@@ -103,6 +109,7 @@ class VelocityPlatformerController : ZilchComponent
     
     function Jump()
     {
+        Console.WriteLine("Jump");
         var vel = this.Velocity;
         vel.Y = this.JumpVelocity;
         this.Velocity = vel;

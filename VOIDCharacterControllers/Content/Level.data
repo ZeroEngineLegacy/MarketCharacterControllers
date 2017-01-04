@@ -10,14 +10,6 @@ Level =
 		{
 			string Name = "LevelSettings",
 		},
-		GravityEffect = 
-		{
-			bool Active = true,
-			bool WakeUpOnChange = false,
-			bool LocalSpaceDirection = true,
-			float Strength = 10,
-			Vec3 Direction = [0, -1, 0],
-		},
 		DragEffect = 
 		{
 			bool Active = true,
@@ -53,9 +45,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0.615083516, 1.7894212, 24.7263336],
+			Vec3 Translation = [-8.90657711, 0.673150361, 17.7152538],
 			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [-0.0427421704, 0.0156926624, 0.000671434274, 0.9989627],
+			Quat Rotation = [-0.0214900747, -0.171888143, -0.00375061831, 0.984874904],
 		},
 		Camera = 
 		{
@@ -117,10 +109,10 @@ Level =
 		EditorCameraController = 
 		{
 			ControlMode ControlMode = Orbit,
-			float LookDistance = 24.8292828,
-			float VerticalAngle = 0.0855209529,
-			float HorizontalAngle = -0.0314153619,
-			Vec3 LookTarget = [-0.161958814, -0.331415325, -7.07971104e-09],
+			float LookDistance = 18.3939915,
+			float VerticalAngle = 0.0436332859,
+			float HorizontalAngle = 0.345575094,
+			Vec3 LookTarget = [-2.68176723, -0.129185319, 0.425172746],
 			float MoveSensitivity = 1,
 		},
 	},
@@ -210,71 +202,6 @@ Level =
 		},
 		Named = 
 		{
-			string Name = "Player",
-		},
-		Transform = 
-		{
-			Vec3 Translation = [0.447570801, 0, 0],
-			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [0, 0, 0, 1],
-		},
-		Model = 
-		{
-			bool Visible = true,
-			bool ViewCulling = true,
-			bool VisibilityEvents = true,
-			string Material = "4de020863e85bb61:DefaultMaterial",
-			string Mesh = "4de0354322b376ae:Sphere",
-		},
-		RigidBody = 
-		{
-			Vec3 Velocity = [0, 0, 0],
-			Vec3 AngularVelocity = [0, 0, 0],
-			Enum DynamicState = Dynamic,
-			bool AllowSleep = false,
-			bool Asleep = false,
-			bool RotationLocked = true,
-			Enum Mode2D = InheritFromSpace,
-		},
-		SphereCollider = 
-		{
-			bool Ghost = false,
-			bool SendsEvents = true,
-			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
-			string CollisionGroup = "4e740859314e5515:DefaultGroup",
-			Vec3 Offset = [0, 0, 0],
-			float Radius = 0.49000001,
-		},
-		GravityEffect = 
-		{
-			bool Active = true,
-			bool WakeUpOnChange = true,
-			bool LocalSpaceDirection = true,
-			float Strength = 10,
-			Vec3 Direction = [0, -1, 0],
-		},
-		KeyboardInterpreter2D = 
-		{
-			Enum LeftKey = A,
-			Enum RightKey = D,
-			Enum JumpKey = Space,
-			Enum SprintKey = Shift,
-		},
-		GroundDetection = 
-		{
-			float MaxGroundSlope = 0,
-			bool DebugPrint = false,
-			bool DrawDebug = false,
-		},
-	},
-	Cog = 
-	{
-		LinkId = 
-		{
-			uint Id = 5,
-		},
-		Named = 
-		{
 			string Name = "Cube",
 		},
 		Transform = 
@@ -305,7 +232,7 @@ Level =
 	{
 		LinkId = 
 		{
-			uint Id = 6,
+			uint Id = 5,
 		},
 		Named = 
 		{
@@ -339,6 +266,40 @@ Level =
 	{
 		LinkId = 
 		{
+			uint Id = 6,
+		},
+		Named = 
+		{
+			string Name = "Cube",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [-10.5549164, 0.158463717, 0],
+			Vec3 Scale = [12.4457979, 1.2008034, 1],
+			Quat Rotation = [0, 0, -0.26272577, 0.964870572],
+		},
+		Model = 
+		{
+			bool Visible = true,
+			bool ViewCulling = true,
+			bool VisibilityEvents = true,
+			string Material = "4de020863e85bb61:DefaultMaterial",
+			string Mesh = "4de0354322b345ae:Cube",
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsEvents = true,
+			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
+			string CollisionGroup = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 HalfSize = [0.5, 0.5, 0.5],
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
 			uint Id = 7,
 		},
 		Named = 
@@ -347,9 +308,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-10.5549164, 0.831169605, 0],
+			Vec3 Translation = [10.3282051, 1.71977091, 0],
 			Vec3 Scale = [12.4457979, 1.2008034, 1],
-			Quat Rotation = [0, 0, -0.26272577, 0.964870572],
+			Quat Rotation = [0, 0, 0.390731126, 0.920504868],
 		},
 		Model = 
 		{
@@ -377,13 +338,13 @@ Level =
 		},
 		Named = 
 		{
-			string Name = "Cube",
+			string Name = "Sphere",
 		},
 		Transform = 
 		{
-			Vec3 Translation = [10.3282051, 2.23376703, 0],
-			Vec3 Scale = [12.4457979, 1.2008034, 1],
-			Quat Rotation = [0, 0, 0.390731126, 0.920504868],
+			Vec3 Translation = [-1.66548121, -0.331415325, -7.07971104e-09],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
 		},
 		Model = 
 		{
@@ -391,16 +352,55 @@ Level =
 			bool ViewCulling = true,
 			bool VisibilityEvents = true,
 			string Material = "4de020863e85bb61:DefaultMaterial",
-			string Mesh = "4de0354322b345ae:Cube",
+			string Mesh = "4de0354322b376ae:Sphere",
 		},
-		BoxCollider = 
+		RigidBody = 
+		{
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+			Enum DynamicState = Dynamic,
+			bool AllowSleep = false,
+			bool Asleep = false,
+			bool RotationLocked = true,
+			Enum Mode2D = InheritFromSpace,
+		},
+		SphereCollider = 
 		{
 			bool Ghost = false,
 			bool SendsEvents = true,
 			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
 			string CollisionGroup = "4e740859314e5515:DefaultGroup",
 			Vec3 Offset = [0, 0, 0],
-			Vec3 HalfSize = [0.5, 0.5, 0.5],
+			float Radius = 0.5,
+		},
+		GravityEffect = 
+		{
+			bool Active = true,
+			bool WakeUpOnChange = true,
+			bool LocalSpaceDirection = true,
+			float Strength = 10,
+			Vec3 Direction = [0, -1, 0],
+		},
+		GroundDetection = 
+		{
+			float MaxGroundSlope = 45,
+			bool DebugPrint = true,
+			bool DrawDebug = true,
+		},
+		ForceBasedPlatformerController = 
+		{
+			float MoveForce = 50,
+			float SprintModifier = 2,
+			float JumpForce = 250,
+			float MaxGroundSpeed = 25,
+			int MaxJumpCount = 2,
+		},
+		KeyboardInterpreter2D = 
+		{
+			Enum LeftKey = A,
+			Enum RightKey = D,
+			Enum JumpKey = Space,
+			Enum SprintKey = Shift,
 		},
 	},
 },

@@ -60,17 +60,19 @@ class GroundDetection : ZilchComponent
         //store my position locally
         var myPos = this.Owner.Transform.WorldTranslation;
         //store my scale locally
-        var myScale = this.Owner.Transform.Scale;
+        var myScale = this.Owner.Transform.WorldScale;
         
         //Cast a ray down from the left edge of the object
+        //We use 2.01 to get slightly less than half scale so 
+        //the ray starts inside the player not detecting it
         var castRayL = Ray();
-        castRayL.Start = myPos - Real3(myScale.X/2, 0, 0);
+        castRayL.Start = myPos - Real3(myScale.X/2.01, 0, 0);
         castRayL.Direction = this.GravityEffect.Direction;
         var castResultL = this.Space.PhysicsSpace.CastRayFirst(castRayL);
         
         //Cast a ray down from the right edge of the object
         var castRayR = Ray();
-        castRayR.Start = myPos + Real3(myScale.X/2, 0, 0);
+        castRayR.Start = myPos + Real3(myScale.X/2.01, 0, 0);
         castRayR.Direction = this.GravityEffect.Direction;
         var castResultR = this.Space.PhysicsSpace.CastRayFirst(castRayR);
         
@@ -89,9 +91,9 @@ class GroundDetection : ZilchComponent
         
         if(this.DrawDebug)
         {
-            this.DrawRay(castRayL, castResultL.Distance);
-            this.DrawRay(castRayR, castResultR.Distance);
-            this.DrawRay(castRayM, castResultM.Distance);
+            this.DrawRay(castRayL, castResultL.Distance, Real4(1,0,0,1));
+            this.DrawRay(castRayR, castResultR.Distance, Real4(0,1,0,1));
+            this.DrawRay(castRayM, castResultM.Distance, Real4(0,0,1,1));
         }
         
         //Iterate through the contacts on the object's collider
@@ -157,6 +159,19 @@ class GroundDetection : ZilchComponent
         line.Start = ray.Start;
         line.End = ray.Start + (ray.Direction * len);
         line.Color = Real4(1,1,1,1);
+        line.OnTop = true;
+        line.HeadSize = 0.2;
+        DebugDraw.Add(line);
+    }
+    
+    function DrawRay(ray : Ray, len : Real, color : Real4)
+    {
+        var line = DebugLine();
+        line.Start = ray.Start;
+        line.End = ray.Start + (ray.Direction * len);
+        line.Color = color;
+        line.OnTop = true;
+        line.HeadSize = 0.2;
         DebugDraw.Add(line);
     }
 }

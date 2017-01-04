@@ -61,13 +61,23 @@ class ForceBasedPlatformerController : ZilchComponent
             //The movement force should be applied parallel to walkable surface.
             //To do this we rotate the surface normal by 90 or -90 degrees to get
             //a direction for the force.
+            var dir = Real3();
             var angle = 0.0;
             if(event.MoveDir == -1)
+            {
                 angle = -Math.Pi/2;
+                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+            }
             else if(event.MoveDir == 1)
+            {
                 angle = Math.Pi/2;
+                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+            }
+            var rat = Ray();
+            rat.Start = this.Owner.Transform.Translation;
+            rat.Direction = dir;
+            this.DrawRay(rat, 5);
             
-            var dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
             var force = dir * this.MoveForce;
             
             if(event.SprintKeyDown)
@@ -98,5 +108,16 @@ class ForceBasedPlatformerController : ZilchComponent
         //Apply the jump force opposite the pull of gravity
         var dir = -this.GravityEffect.Direction;
         this.RigidBody.ApplyForce(dir * this.JumpForce);
+    }
+    
+    function DrawRay(ray : Ray, len : Real)
+    {
+        var line = DebugLine();
+        line.Start = ray.Start;
+        line.End = ray.Start + (ray.Direction * len);
+        line.Color = Real4(1,1,1,1);
+        line.HeadSize = 1.0;
+        line.OnTop = true;
+        DebugDraw.Add(line);
     }
 }
