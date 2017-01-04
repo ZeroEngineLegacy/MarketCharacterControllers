@@ -2,7 +2,7 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "VelocityPlatformerController",
+		string Name = "VelocityPlatformerController2D",
 		uint64 ResourceId = 580f1a23943822c6,
 	},
 },

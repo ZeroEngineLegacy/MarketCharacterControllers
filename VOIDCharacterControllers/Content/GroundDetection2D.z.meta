@@ -2,7 +2,7 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "GroundDetection",
+		string Name = "GroundDetection2D",
 		uint64 ResourceId = 580ec15bc6028031,
 	},
 },

@@ -3,11 +3,11 @@
 /* Last Update: 12/13/2016                                                                                  */
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Arend Danielek                                                                          */
-/* Class: VelocityPlatformerController                                                                      */
+/* Class: VelocityPlatformerController2D                                                                      */
 /* Brief: Implements a basic velocity based 2D dynamic side view platformer controller.                     */
 /************************************************************************************************************/
 
-class VelocityPlatformerController : ZilchComponent
+class VelocityPlatformerController2D : ZilchComponent
 {
     [Dependency]
     var RigidBody : RigidBody;
@@ -50,7 +50,7 @@ class VelocityPlatformerController : ZilchComponent
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        Zero.Connect(this.Owner, Events.CharMoveEvent, this.OnCharMoveEvent);
+        Zero.Connect(this.Owner, Events.CharMoveEvent2D, this.OnCharMoveEvent2D);
         Zero.Connect(this.Owner, Events.CharJumpEvent, this.OnCharJumpEvent);
     }
 
@@ -60,7 +60,7 @@ class VelocityPlatformerController : ZilchComponent
             this.Velocity = Math.Clamp(this.RigidBody.Velocity, -this.MaxGroundSpeed.XXX, this.MaxGroundSpeed.XXX);
     }
     
-    function OnCharMoveEvent(event : CharMoveEvent)
+    function OnCharMoveEvent2D(event : CharMoveEvent2D)
     {
         //If the player is partially on ground
         if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)

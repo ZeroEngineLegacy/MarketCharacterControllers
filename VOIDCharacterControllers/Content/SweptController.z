@@ -1,19 +1,22 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Nathon Carlson
-
-// Usage:
-// The user will need to make their own script for peripheral input.
-// Each LogicUpdate, the input script should determine the direction of
-// desired movement (does not need to be normalized) and pass it to the
-// Update function of this script, along with the Dt from the UpdateEvent.
-
-// Modifying the RigidBody velocity will have no affect on the controller.
-// ControllerVelocity can be modified externally for specific needs
-// or behaviors, in which case, other states like Grounded and Jumping
-// should also be set appropriately to reflect the intended behavior.
-
-// Character controller is independent of physics update.
-// The RigidBody is expected to be Kinematic when using this controller.
+/************************************************************************************************************/
+/* Copyright 2017 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/4/2017                                                                                    */
+/* Author: Nathon Carlson                                                                                   */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: ViewportConfiguration                                                                             */
+/* Brief: The user will need to make their own script for peripheral input.                                 */
+/* Each LogicUpdate, the input script should determine the direction of                                     */
+/* desired movement (does not need to be normalized) and pass it to the                                     */
+/* Update function of this script, along with the Dt from the UpdateEvent.                                  */
+/*                                                                                                          */
+/* Modifying the RigidBody velocity will have no affect on the controller.                                  */
+/* ControllerVelocity can be modified externally for specific needs                                         */
+/* or behaviors, in which case, other states like Grounded and Jumping                                      */
+/* should also be set appropriately to reflect the intended behavior.                                       */
+/*                                                                                                          */
+/* Character controller is independent of physics update.                                                   */
+/* The RigidBody is expected to be Kinematic when using this controller.                                    */
+/************************************************************************************************************/
 class SweptController : ZilchComponent
 {
     [Dependency]

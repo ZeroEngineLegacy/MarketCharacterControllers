@@ -1,13 +1,13 @@
 /************************************************************************************************************/
-/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
-/* Last Update: 1/3/2017                                                                                    */
+/* Copyright 2017 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/4/2017                                                                                    */
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Arend Danielek                                                                          */
-/* Class: ForceBasedPlatformerController                                                                    */
+/* Class: ForceBasedPlatformerController2D                                                                    */
 /* Brief: Implements a basic force based 2D dynamic side view platformer controller.                        */
 /************************************************************************************************************/
 
-class ForceBasedPlatformerController : ZilchComponent
+class ForcePlatformerController2D : ZilchComponent
 {
     [Dependency]
     var GroundDetection : GroundDetection;
@@ -42,7 +42,7 @@ class ForceBasedPlatformerController : ZilchComponent
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        Zero.Connect(this.Owner, Events.CharMoveEvent, this.OnCharMoveEvent);
+        Zero.Connect(this.Owner, Events.CharMoveEvent2D, this.OnCharMoveEvent2D);
         Zero.Connect(this.Owner, Events.CharJumpEvent, this.OnCharJumpEvent);
     }
 
@@ -53,7 +53,7 @@ class ForceBasedPlatformerController : ZilchComponent
             this.RigidBody.Velocity = Math.Clamp(this.RigidBody.Velocity, -this.MaxGroundSpeed.XXX, this.MaxGroundSpeed.XXX);
     }
 
-    function OnCharMoveEvent(event : CharMoveEvent)
+    function OnCharMoveEvent2D(event : CharMoveEvent2D)
     {
         //If the character is on a walkable surface
         if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)
@@ -73,10 +73,6 @@ class ForceBasedPlatformerController : ZilchComponent
                 angle = Math.Pi/2;
                 dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
             }
-            var rat = Ray();
-            rat.Start = this.Owner.Transform.Translation;
-            rat.Direction = dir;
-            this.DrawRay(rat, 5);
             
             var force = dir * this.MoveForce;
             

@@ -2,7 +2,7 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "KeyboardInterpreter",
+		string Name = "KeyboardInterpreter2D",
 		uint64 ResourceId = 580ef4a928be09ae,
 	},
 },
