@@ -53,12 +53,12 @@ class KeyboardInterpreter3D : ZilchComponent
         if(Zero.Keyboard.KeyIsDown(this.SprintKey))
             moveEvent.SprintKeyDown = true;
         
-        //Inform the character controller of the player's desired movement
-        this.Owner.DispatchEvent(Events.CharMoveEvent3D, moveEvent);
-        
         //Inform the character controller if the player wishes to jump
         if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
-            this.Owner.DispatchEvent(Events.CharJumpEvent, CharJumpEvent());
+            moveEvent.JumpKeyPressed = true;
+        
+        //Inform the character controller of the player's desired movement
+        this.Owner.DispatchEvent(Events.CharMoveEvent3D, moveEvent);
     }
 }
 
@@ -69,4 +69,5 @@ class CharMoveEvent3D : ZilchEvent
     //Oriented left or right based on ground slope.
     var MoveDir : Real3;
     var SprintKeyDown : Boolean = false;
+    var JumpKeyPressed : Boolean = false;
 }

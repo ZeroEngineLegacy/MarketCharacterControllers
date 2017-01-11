@@ -10,13 +10,16 @@
 class ForcePlatformerController2D : ZilchComponent
 {
     [Dependency]
-    var GroundDetection : GroundDetection;
+    var GravityEffect : GravityEffect;
     
     [Dependency]
     var RigidBody : RigidBody;
     
     [Dependency]
-    var GravityEffect : GravityEffect;
+    var KeyboardInterpreter2D : KeyboardInterpreter2D;
+    
+    [Dependency]
+    var GroundDetection2D : GroundDetection2D;
     
     [Property]
     var MoveForce : Real = 10;
@@ -27,7 +30,7 @@ class ForcePlatformerController2D : ZilchComponent
     
     //Force to be applied opposite of WorldUp when Jumping
     [Property]
-    var JumpForce : Real = 3.0;
+    var JumpForce : Real = 250.0;
     
     [Property]
     var MaxGroundSpeed : Real = 25;
@@ -43,20 +46,19 @@ class ForcePlatformerController2D : ZilchComponent
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         Zero.Connect(this.Owner, Events.CharMoveEvent2D, this.OnCharMoveEvent2D);
-        Zero.Connect(this.Owner, Events.CharJumpEvent, this.OnCharJumpEvent);
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
         //If the character is on a walkable surface clamp the current velocity to MaxGroundSpeed
-        if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)
+        if(this.GroundDetection2D.IsOnGround || this.GroundDetection2D.IsPartiallyOnGround)
             this.RigidBody.Velocity = Math.Clamp(this.RigidBody.Velocity, -this.MaxGroundSpeed.XXX, this.MaxGroundSpeed.XXX);
     }
 
     function OnCharMoveEvent2D(event : CharMoveEvent2D)
     {
         //If the character is on a walkable surface
-        if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)
+        if(this.GroundDetection2D.IsOnGround || this.GroundDetection2D.IsPartiallyOnGround)
         {
             //The movement force should be applied parallel to walkable surface.
             //To do this we rotate the surface normal by 90 or -90 degrees to get
@@ -66,36 +68,37 @@ class ForcePlatformerController2D : ZilchComponent
             if(event.MoveDir == -1)
             {
                 angle = -Math.Pi/2;
-                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+                dir = Math.RotateVector(this.GroundDetection2D.GroundNormal, Real3(0,0,1), angle);
             }
             else if(event.MoveDir == 1)
             {
                 angle = Math.Pi/2;
-                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+                dir = Math.RotateVector(this.GroundDetection2D.GroundNormal, Real3(0,0,1), angle);
             }
             
             var force = dir * this.MoveForce;
             
+            //Scale the movement force if the sprint key is down
             if(event.SprintKeyDown)
                 force *= this.SprintModifier;
             
             this.RigidBody.ApplyForce(force);
         }
-    }
-
-    function OnCharJumpEvent(event : CharJumpEvent)
-    {
-        //If the character IsOnGround this is the first jump
-        if(this.GroundDetection.IsOnGround)
+        
+        if(event.JumpKeyPressed)
         {
-            this.JumpCount = 1;
-            this.Jump();
-        }
-        //If the character is not on ground but still has jumps left let it jump
-        else if(this.JumpCount < this.MaxJumpCount)
-        {
-            this.JumpCount += 1;
-            this.Jump();
+            //If the character IsOnGround this is the first jump
+            if(this.GroundDetection2D.IsOnGround)
+            {
+                this.JumpCount = 1;
+                this.Jump();
+            }
+            //If the character is not on ground but still has jumps left let it jump
+            else if(this.JumpCount < this.MaxJumpCount)
+            {
+                this.JumpCount += 1;
+                this.Jump();
+            }
         }
     }
     

@@ -45,9 +45,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-8.90657711, 0.673150361, 17.7152538],
+			Vec3 Translation = [-3.3552916, 0.576920629, 18.7932606],
 			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [-0.0214900747, -0.171888143, -0.00375061831, 0.984874904],
+			Quat Rotation = [-0.0191942435, -0.0183214806, -0.000351790921, 0.999647856],
 		},
 		Camera = 
 		{
@@ -110,8 +110,8 @@ Level =
 		{
 			ControlMode ControlMode = Orbit,
 			float LookDistance = 18.3939915,
-			float VerticalAngle = 0.0436332859,
-			float HorizontalAngle = 0.345575094,
+			float VerticalAngle = 0.0383972935,
+			float HorizontalAngle = 0.0366517566,
 			Vec3 LookTarget = [-2.68176723, -0.129185319, 0.425172746],
 			float MoveSensitivity = 1,
 		},
@@ -206,7 +206,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, -2.15584397, 0],
+			Vec3 Translation = [0, -2.18181729, 0],
 			Vec3 Scale = [12.4457979, 1.2008034, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -240,40 +240,6 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, -2.18181729, 0],
-			Vec3 Scale = [12.4457979, 1.2008034, 1],
-			Quat Rotation = [0, 0, 0, 1],
-		},
-		Model = 
-		{
-			bool Visible = true,
-			bool ViewCulling = true,
-			bool VisibilityEvents = true,
-			string Material = "4de020863e85bb61:DefaultMaterial",
-			string Mesh = "4de0354322b345ae:Cube",
-		},
-		BoxCollider = 
-		{
-			bool Ghost = false,
-			bool SendsEvents = true,
-			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
-			string CollisionGroup = "4e740859314e5515:DefaultGroup",
-			Vec3 Offset = [0, 0, 0],
-			Vec3 HalfSize = [0.5, 0.5, 0.5],
-		},
-	},
-	Cog = 
-	{
-		LinkId = 
-		{
-			uint Id = 6,
-		},
-		Named = 
-		{
-			string Name = "Cube",
-		},
-		Transform = 
-		{
 			Vec3 Translation = [-10.5549164, 0.158463717, 0],
 			Vec3 Scale = [12.4457979, 1.2008034, 1],
 			Quat Rotation = [0, 0, -0.26272577, 0.964870572],
@@ -300,7 +266,7 @@ Level =
 	{
 		LinkId = 
 		{
-			uint Id = 7,
+			uint Id = 6,
 		},
 		Named = 
 		{
@@ -334,11 +300,11 @@ Level =
 	{
 		LinkId = 
 		{
-			uint Id = 8,
+			uint Id = 7,
 		},
 		Named = 
 		{
-			string Name = "Sphere",
+			string Name = "Player",
 		},
 		Transform = 
 		{
@@ -364,6 +330,14 @@ Level =
 			bool RotationLocked = true,
 			Enum Mode2D = InheritFromSpace,
 		},
+		GravityEffect = 
+		{
+			bool Active = true,
+			bool WakeUpOnChange = true,
+			bool LocalSpaceDirection = true,
+			float Strength = 10,
+			Vec3 Direction = [0, -1, 0],
+		},
 		SphereCollider = 
 		{
 			bool Ghost = false,
@@ -373,27 +347,11 @@ Level =
 			Vec3 Offset = [0, 0, 0],
 			float Radius = 0.5,
 		},
-		GravityEffect = 
-		{
-			bool Active = true,
-			bool WakeUpOnChange = true,
-			bool LocalSpaceDirection = true,
-			float Strength = 10,
-			Vec3 Direction = [0, -1, 0],
-		},
-		GroundDetection = 
+		GroundDetection2D = 
 		{
 			float MaxGroundSlope = 45,
 			bool DebugPrint = true,
 			bool DrawDebug = true,
-		},
-		ForceBasedPlatformerController = 
-		{
-			float MoveForce = 50,
-			float SprintModifier = 2,
-			float JumpForce = 250,
-			float MaxGroundSpeed = 25,
-			int MaxJumpCount = 2,
 		},
 		KeyboardInterpreter2D = 
 		{
@@ -401,6 +359,14 @@ Level =
 			Enum RightKey = D,
 			Enum JumpKey = Space,
 			Enum SprintKey = Shift,
+		},
+		VelocityPlatformerController2D = 
+		{
+			float MoveSpeed = 5,
+			float SprintModifier = 2,
+			float JumpVelocity = 25,
+			float MaxGroundSpeed = 25,
+			int MaxJumpCount = 2,
 		},
 	},
 },

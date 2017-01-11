@@ -7,7 +7,7 @@
 /* Brief: Performs basic ground detection for a 2D platformer character.                                    */
 /************************************************************************************************************/
 
-class GroundDetection : ZilchComponent
+class GroundDetection2D : ZilchComponent
 {
     [Dependency]
     var Transform : Transform;    
@@ -51,11 +51,12 @@ class GroundDetection : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        //Reset all ground data to avoid state leakage from last frame
-        this.IsOnGround = false;
-        this.IsPartiallyOnGround = false;
-        this.Ground = null;
-        this.GroundNormal = Real3();
+        this.CheckOnGround();
+    }
+    
+    function CheckOnGround()
+    {
+        this.ClearGroundData();
         
         //store my position locally
         var myPos = this.Owner.Transform.WorldTranslation;
@@ -151,6 +152,15 @@ class GroundDetection : ZilchComponent
         
         if(this.DebugPrint)
             Console.WriteLine("Not On Ground");
+    }
+    
+    function ClearGroundData()
+    {
+        //Reset all ground data to avoid state leakage from last frame
+        this.IsOnGround = false;
+        this.IsPartiallyOnGround = false;
+        this.Ground = null;
+        this.GroundNormal = Real3();
     }
     
     function DrawRay(ray : Ray, len : Real)

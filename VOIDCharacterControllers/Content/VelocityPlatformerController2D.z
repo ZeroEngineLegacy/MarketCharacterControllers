@@ -10,13 +10,19 @@
 class VelocityPlatformerController2D : ZilchComponent
 {
     [Dependency]
+    var Transform : Transform;
+    
+    [Dependency]
     var RigidBody : RigidBody;
     
     [Dependency]
     var GravityEffect : GravityEffect;
     
     [Dependency]
-    var GroundDetection : GroundDetection;
+    var GroundDetection2D : GroundDetection2D;
+    
+    [Dependency]
+    var KeyboardInterpreter2D : KeyboardInterpreter2D;
     
     //Getter-Setter for RigidBody.Velocity
     var Velocity : Real3
@@ -51,19 +57,33 @@ class VelocityPlatformerController2D : ZilchComponent
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         Zero.Connect(this.Owner, Events.CharMoveEvent2D, this.OnCharMoveEvent2D);
-        Zero.Connect(this.Owner, Events.CharJumpEvent, this.OnCharJumpEvent);
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)
-            this.Velocity = Math.Clamp(this.RigidBody.Velocity, -this.MaxGroundSpeed.XXX, this.MaxGroundSpeed.XXX);
+        //if(this.GroundDetection2D.IsOnGround || this.GroundDetection2D.IsPartiallyOnGround)
+        //    this.Velocity = Math.Clamp(this.RigidBody.Velocity, -this.MaxGroundSpeed.XXX, this.MaxGroundSpeed.XXX);
     }
     
     function OnCharMoveEvent2D(event : CharMoveEvent2D)
     {
+        if(event.JumpKeyPressed)
+        {
+            //If the character IsOnGround this is the first jump
+            if(this.GroundDetection2D.IsOnGround)
+            {
+                this.JumpCount = 1;
+                this.Jump();
+            }
+            //If the character is not on ground but still has jumps left let it jump
+            else if(this.JumpCount < this.MaxJumpCount)
+            {
+                this.JumpCount += 1;
+                this.Jump();
+            }
+        }
         //If the player is partially on ground
-        if(this.GroundDetection.IsOnGround || this.GroundDetection.IsPartiallyOnGround)
+        else if(this.GroundDetection2D.IsOnGround || this.GroundDetection2D.IsPartiallyOnGround)
         {
             //The movement force should be applied parallel to walkable surface.
             //To do this we rotate the surface normal by 90 or -90 degrees to get
@@ -73,12 +93,12 @@ class VelocityPlatformerController2D : ZilchComponent
             if(event.MoveDir == -1)
             {
                 angle = -Math.Pi/2;
-                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+                dir = Math.RotateVector(this.GroundDetection2D.GroundNormal, Real3(0,0,1), angle);
             }
             else if(event.MoveDir == 1)
             {
                 angle = Math.Pi/2;
-                dir = Math.RotateVector(this.GroundDetection.GroundNormal, Real3(0,0,1), angle);
+                dir = Math.RotateVector(this.GroundDetection2D.GroundNormal, Real3(0,0,1), angle);
             }
             
             var newVel = dir * this.MoveSpeed;
@@ -91,25 +111,9 @@ class VelocityPlatformerController2D : ZilchComponent
         }
     }
 
-    function OnCharJumpEvent(event : CharJumpEvent)
-    {
-        //If the character IsOnGround this is the first jump
-        if(this.GroundDetection.IsOnGround)
-        {
-            this.JumpCount = 1;
-            this.Jump();
-        }
-        //If the character is not on ground but still has jumps left let it jump
-        else if(this.JumpCount < this.MaxJumpCount)
-        {
-            this.JumpCount += 1;
-            this.Jump();
-        }
-    }
-    
     function Jump()
     {
-        Console.WriteLine("Jump");
+        //this.Owner.Transform.Translation += Real3(0,0.1,0);
         var vel = this.Velocity;
         vel.Y = this.JumpVelocity;
         this.Velocity = vel;
