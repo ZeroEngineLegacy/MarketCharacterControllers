@@ -1,8 +1,16 @@
-TextContent = 
+[Version:1]
+TextContent 
 {
-	ZilchScriptBuilder = 
+	ZilchScriptBuilder 
 	{
-		string Name = "VelocityPlatformerController2D",
-		uint64 ResourceId = 580f1a23943822c6,
-	},
-},
+		var Name = "VelocityPlatformerController2D"
+		var ResourceId = 0x580f1a23943822c6
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"CharacterController"
+		}
+	}
+}

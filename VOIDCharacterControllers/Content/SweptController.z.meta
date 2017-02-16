@@ -1,15 +1,17 @@
-TextContent = 
+[Version:1]
+TextContent 
 {
-	ZilchScriptBuilder = 
+	ZilchScriptBuilder 
 	{
-		string Name = "SweptController",
-		uint64 ResourceId = 536dc673d285299a,
-	},
-	ContentTags = 
+		var Name = "SweptController"
+		var ResourceId = 0x536dc673d285299a
+	}
+	ContentTags 
 	{
-		Array Tags = 
-		[
-			"SweptCharacter",
-		],
-	},
-},
+		var Tags = Array
+		{
+			"CharacterController"
+			"SweptCharacter"
+		}
+	}
+}

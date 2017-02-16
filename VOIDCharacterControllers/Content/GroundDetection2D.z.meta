@@ -1,8 +1,16 @@
-TextContent = 
+[Version:1]
+TextContent 
 {
-	ZilchScriptBuilder = 
+	ZilchScriptBuilder 
 	{
-		string Name = "GroundDetection2D",
-		uint64 ResourceId = 580ec15bc6028031,
-	},
-},
+		var Name = "GroundDetection2D"
+		var ResourceId = 0x580ec15bc6028031
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"GroundDetection"
+		}
+	}
+}

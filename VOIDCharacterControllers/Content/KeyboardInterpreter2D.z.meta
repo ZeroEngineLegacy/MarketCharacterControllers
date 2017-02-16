@@ -1,8 +1,16 @@
-TextContent = 
+[Version:1]
+TextContent 
 {
-	ZilchScriptBuilder = 
+	ZilchScriptBuilder 
 	{
-		string Name = "KeyboardInterpreter2D",
-		uint64 ResourceId = 580ef4a928be09ae,
-	},
-},
+		var Name = "KeyboardInterpreter2D"
+		var ResourceId = 0x580ef4a928be09ae
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Input"
+		}
+	}
+}

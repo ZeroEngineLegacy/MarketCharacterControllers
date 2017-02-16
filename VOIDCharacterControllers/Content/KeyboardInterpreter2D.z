@@ -7,56 +7,55 @@
 /* Brief: A simple 2D input interpreter for a 2D side-scrolling platformer.                                 */
 /************************************************************************************************************/
 
-class KeyboardInterpreter2D : ZilchComponent
-{
-    [Property]
-    var LeftKey : Keys = Keys.A;
-    
-    [Property]
-    var RightKey : Keys = Keys.D;
-    
-    [Property]
-    var JumpKey : Keys = Keys.Space;
-    
-    [Property]
-    var SprintKey : Keys = Keys.Shift;
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    }
-
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-        //Determine whether the player wants to move left or right
-        var moveDir = 0.0;
-        if(Zero.Keyboard.KeyIsDown(this.LeftKey))
-            moveDir += 1;
-        if(Zero.Keyboard.KeyIsDown(this.RightKey))
-            moveDir += -1;
-        
-        var moveEvent = CharMoveEvent2D();
-        moveEvent.MoveDir = moveDir;
-        
-        //Determine if the player wants to sprint
-        if(Zero.Keyboard.KeyIsDown(this.SprintKey))
-            moveEvent.SprintKeyDown = true;
-        
-        //Inform the character controller if the player wishes to jump
-        if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
-            moveEvent.JumpKeyPressed = true;
-            
-        //Inform the character controller of the player's desired movement
-        this.Owner.DispatchEvent(Events.CharMoveEvent2D, moveEvent);
-    }
-}
-
 class CharMoveEvent2D : ZilchEvent
 {
-    sends CharMoveEvent2D : CharMoveEvent2D;
-    
-    //Oriented left or right based on ground slope.
     var MoveDir : Real;
     var SprintKeyDown : Boolean = false;
     var JumpKeyPressed : Boolean = false;
+}
+
+class KeyboardInterpreter2D : ZilchComponent
+{
+  sends CharMoveEvent2D : CharMoveEvent2D;
+
+  [Property]
+  var LeftKey : Keys = Keys.A;
+
+  [Property]
+  var RightKey : Keys = Keys.D;
+
+  [Property]
+  var JumpKey : Keys = Keys.Space;
+
+  [Property]
+  var SprintKey : Keys = Keys.Shift;
+
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // Determine whether the player wants to move left or right
+    var moveDir = 0.0;
+    
+    if (Zero.Keyboard.KeyIsDown(this.LeftKey))
+    {
+      moveDir += 1;
+    }
+    if (Zero.Keyboard.KeyIsDown(this.RightKey))
+    {
+      moveDir += -1;
+    }
+    
+    var moveEvent = CharMoveEvent2D();
+    
+    moveEvent.MoveDir = moveDir;
+    moveEvent.SprintKeyDown = Zero.Keyboard.KeyIsDown(this.SprintKey);
+    moveEvent.JumpKeyPressed = Zero.Keyboard.KeyIsPressed(this.JumpKey);
+    
+    // Inform the character controller of the player's desired movement
+    this.Owner.DispatchEvent(Events.CharMoveEvent2D, moveEvent);
+  }
 }

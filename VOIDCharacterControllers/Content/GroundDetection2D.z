@@ -9,179 +9,189 @@
 
 class GroundDetection2D : ZilchComponent
 {
-    [Dependency]
-    var Transform : Transform;    
-    
-    [Dependency]
-    var Collider : Collider;
-    
-    [Dependency]
-    var GravityEffect : GravityEffect;
-    
-    //Getter-Setter translating input/output to/from radians for MaxGroundSlopeRad
-    [Property]
-    var MaxGroundSlope : Real;
-    var MaxGroundSlopeRad : Real
-    {
-        get { return Math.ToRadians(this.MaxGroundSlope); }
-        set { this.MaxGroundSlope = Math.ToDegrees(value); }
-    }
-    
-    //Is the object majoritively on a valid ground
-    var IsOnGround : Boolean = false;
-    //Is the object at least partially on a valid ground
-    var IsPartiallyOnGround : Boolean = false;
-    
-    //Current ground object, null if not on ground
-    var Ground : Cog = null;
-    //Normal of contact face of current ground object, Real3(0,0,0) if no ground
-    var GroundNormal : Real3;
-    
-    //Should this component debug print to the console
-    [Property]
-    var DebugPrint : Boolean = false;
-    
-    [Property]
-    var DrawDebug : Boolean = false;
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    }
+  [Dependency]
+  var Transform : Transform = null;
+  
+  [Dependency]
+  var Collider : Collider = null;
+  
+  [Dependency]
+  var GravityEffect : GravityEffect = null;
+  
+  [Property]
+  var MaxGroundSlope : Real = 45.0;
+  
+  [Property]
+  var DebugPrint : Boolean = false;
 
-    function OnLogicUpdate(event : UpdateEvent)
+  [Property]
+  var DrawDebug : Boolean = false;
+  
+  //Is the object majoritively on a valid ground
+  var IsOnGround : Boolean = false;
+  
+  //Is the object at least partially on a valid ground
+  var IsPartiallyOnGround : Boolean = false;
+  
+  //Current ground object, null if not on ground
+  var Ground : Cog = null;
+  
+  //Normal of contact face of current ground object, Real3(0,0,0) if no ground
+  var GroundNormal : Real3;
+  
+  var MaxGroundSlopeRad : Real
+  {
+    get { return Math.ToRadians(this.MaxGroundSlope); }
+  }
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.CheckOnGround();
+  }
+
+  function CheckOnGround()
+  {
+    this.ClearGroundData();
+    
+    // store my position and scale
+    var position = this.Owner.Transform.WorldTranslation;
+    var scale = this.Owner.Transform.WorldScale;
+    
+    // Cast a ray down from the left edge of the object
+    // We use 2.01 to get slightly less than half scale so 
+    // the ray starts inside the player not detecting it
+    var castRayL = Ray();
+    castRayL.Start = position - Real3(scale.X / 2.01, 0, 0);
+    castRayL.Direction = this.GravityEffect.Direction;
+    var castResultL = this.Space.PhysicsSpace.CastRayFirst(castRayL);
+    
+    // Cast a ray down from the right edge of the object
+    var castRayR = Ray();
+    castRayR.Start = position + Real3(scale.X / 2.01, 0, 0);
+    castRayR.Direction = this.GravityEffect.Direction;
+    var castResultR = this.Space.PhysicsSpace.CastRayFirst(castRayR);
+    
+    // Cast a ray down from the middle of the object
+    var castRayM = Ray();
+    castRayM.Start = position;
+    castRayM.Direction = this.GravityEffect.Direction;
+    var castResultM = this.Space.PhysicsSpace.CastRayFirst(castRayM);
+    
+    if (this.DebugPrint)
     {
-        this.CheckOnGround();
+      Console.WriteLine("LeftRay Hit: `castResultL.ObjectHit`");
+      Console.WriteLine("RightRay Hit: `castResultR.ObjectHit`");
+      Console.WriteLine("MidRay Hit: `castResultM.ObjectHit`");
     }
     
-    function CheckOnGround()
+    if (this.DrawDebug)
     {
-        this.ClearGroundData();
+      this.DrawRay(castRayL, castResultL.Distance, Real4(1,0,0,1));
+      this.DrawRay(castRayR, castResultR.Distance, Real4(0,1,0,1));
+      this.DrawRay(castRayM, castResultM.Distance, Real4(0,0,1,1));
+    }
+    
+    // Iterate through the contacts on the object's collider
+    foreach (var contact in this.Collider.Contacts)
+    {
+      // store the negative normal of the contact (towards me)
+      var normal = -contact.FirstPoint.WorldNormalTowardsOther;
+      
+      // Use the dot product and Math.ACos to ge the angle of the ground
+      var cosineOfAngle = Math.Dot(normal, -this.GravityEffect.Direction);
+      cosineOfAngle = Math.Clamp(cosineOfAngle, -1.0, 1.0);
+      
+      var angle = Math.ACos(cosineOfAngle);
+      
+      if (this.DebugPrint)
+      {
+        Console.WriteLine("Ground Angle: `Math.ToDegrees(angle)`");
+      }
+      
+      // Check the ground angle against MaxGroundSlope
+      if (angle > this.MaxGroundSlopeRad)
+      {
+        //Skip this contact if angle is invalid
+        continue;
+      }
+      
+      // Check if middle cast, and left or right cast hit this contact
+      if (castResultM.ObjectHit == contact.OtherObject &&
+         (castResultL.ObjectHit == contact.OtherObject ||
+          castResultR.ObjectHit == contact.OtherObject))
+      {
+        // Set IsOnGround state data
+        this.IsOnGround = true;
+        this.IsPartiallyOnGround = true;
+        this.Ground = contact.OtherObject;
+        this.GroundNormal = normal;
         
-        //store my position locally
-        var myPos = this.Owner.Transform.WorldTranslation;
-        //store my scale locally
-        var myScale = this.Owner.Transform.WorldScale;
-        
-        //Cast a ray down from the left edge of the object
-        //We use 2.01 to get slightly less than half scale so 
-        //the ray starts inside the player not detecting it
-        var castRayL = Ray();
-        castRayL.Start = myPos - Real3(myScale.X/2.01, 0, 0);
-        castRayL.Direction = this.GravityEffect.Direction;
-        var castResultL = this.Space.PhysicsSpace.CastRayFirst(castRayL);
-        
-        //Cast a ray down from the right edge of the object
-        var castRayR = Ray();
-        castRayR.Start = myPos + Real3(myScale.X/2.01, 0, 0);
-        castRayR.Direction = this.GravityEffect.Direction;
-        var castResultR = this.Space.PhysicsSpace.CastRayFirst(castRayR);
-        
-        //Cast a ray down from the middle of the object
-        var castRayM = Ray();
-        castRayM.Start = myPos;
-        castRayM.Direction = this.GravityEffect.Direction;
-        var castResultM = this.Space.PhysicsSpace.CastRayFirst(castRayM);
-        
-        if(this.DebugPrint)
+        if (this.DebugPrint)
         {
-            Console.WriteLine("LeftRay Hit: `castResultL.ObjectHit`");
-            Console.WriteLine("RightRay Hit: `castResultR.ObjectHit`");
-            Console.WriteLine("MidRay Hit: `castResultM.ObjectHit`");
+          Console.WriteLine("OnGround");
         }
         
-        if(this.DrawDebug)
+        // Stop searching we found our ground
+        return;
+      }
+      // Check if just left or right cast hit the contact
+      else if (castResultL.ObjectHit == contact.OtherObject ||
+               castResultR.ObjectHit == contact.OtherObject)
+      {
+        // Set IsPartiallyOnGround state data
+        this.IsPartiallyOnGround = true;
+        this.Ground = contact.OtherObject;
+        this.GroundNormal = normal;
+        
+        if (this.DebugPrint)
         {
-            this.DrawRay(castRayL, castResultL.Distance, Real4(1,0,0,1));
-            this.DrawRay(castRayR, castResultR.Distance, Real4(0,1,0,1));
-            this.DrawRay(castRayM, castResultM.Distance, Real4(0,0,1,1));
+          Console.WriteLine("PartiallyOnGround");
         }
         
-        //Iterate through the contacts on the object's collider
-        foreach(var contact in this.Collider.Contacts)
-        {
-            //store the negative normal of the contact (towards me)
-            var normal = -contact.FirstPoint.WorldNormalTowardsOther;
-            
-            //Use the dot product and Math.ACos to ge the angle of the ground
-            var cosineOfAngle = Math.Dot(normal, -this.GravityEffect.Direction);
-            cosineOfAngle = Math.Clamp(cosineOfAngle, -1.0, 1.0);
-            var angle = Math.ACos(cosineOfAngle);
-            
-            if(this.DebugPrint)
-                Console.WriteLine("Ground Angle: `Math.ToDegrees(angle)`");
-            
-            //Check the ground angle against MaxGroundSlope
-            if(angle > this.MaxGroundSlopeRad)
-                //Skip this contact if angle is invalid
-                continue;
-            
-            //Check if middle cast, and left or right cast hit this contact
-            if(castResultM.ObjectHit == contact.OtherObject &&
-               (castResultL.ObjectHit == contact.OtherObject ||
-               castResultR.ObjectHit == contact.OtherObject))
-            {
-                //Set IsOnGround state data
-                this.IsOnGround = true;
-                this.IsPartiallyOnGround = true;
-                this.Ground = contact.OtherObject;
-                this.GroundNormal = normal;
-                
-                if(this.DebugPrint)
-                    Console.WriteLine("OnGround");
-                
-                //Stop searching we found our ground
-                return;
-            }
-            //Check if just left or right cast hit the contact
-            else if(castResultL.ObjectHit == contact.OtherObject ||
-                    castResultR.ObjectHit == contact.OtherObject)
-            {
-                //Set IsPartiallyOnGround state data
-                this.IsPartiallyOnGround = true;
-                this.Ground = contact.OtherObject;
-                this.GroundNormal = normal;
-                
-                if(this.DebugPrint)
-                    Console.WriteLine("PartiallyOnGround");
-                
-                //Stop searching we found our ground
-                return;
-            }
-        }
-        
-        if(this.DebugPrint)
-            Console.WriteLine("Not On Ground");
+        // Stop searching we found our ground
+        return;
+      }
     }
     
-    function ClearGroundData()
+    if (this.DebugPrint)
     {
-        //Reset all ground data to avoid state leakage from last frame
-        this.IsOnGround = false;
-        this.IsPartiallyOnGround = false;
-        this.Ground = null;
-        this.GroundNormal = Real3();
+      Console.WriteLine("Not On Ground");
     }
-    
-    function DrawRay(ray : Ray, len : Real)
-    {
-        var line = DebugLine();
-        line.Start = ray.Start;
-        line.End = ray.Start + (ray.Direction * len);
-        line.Color = Real4(1,1,1,1);
-        line.OnTop = true;
-        line.HeadSize = 0.2;
-        DebugDraw.Add(line);
-    }
-    
-    function DrawRay(ray : Ray, len : Real, color : Real4)
-    {
-        var line = DebugLine();
-        line.Start = ray.Start;
-        line.End = ray.Start + (ray.Direction * len);
-        line.Color = color;
-        line.OnTop = true;
-        line.HeadSize = 0.2;
-        DebugDraw.Add(line);
-    }
+  }
+
+  function ClearGroundData()
+  {
+    // Reset all ground data to avoid state leakage from last frame
+    this.IsOnGround = false;
+    this.IsPartiallyOnGround = false;
+    this.Ground = null;
+    this.GroundNormal = Real3();
+  }
+
+  function DrawRay(ray : Ray, len : Real)
+  {
+    var line = DebugLine();
+    line.Start = ray.Start;
+    line.End = ray.Start + (ray.Direction * len);
+    line.Color = Real4(1,1,1,1);
+    line.OnTop = true;
+    line.HeadSize = 0.2;
+    DebugDraw.Add(line);
+  }
+
+  function DrawRay(ray : Ray, len : Real, color : Real4)
+  {
+    var line = DebugLine();
+    line.Start = ray.Start;
+    line.End = ray.Start + (ray.Direction * len);
+    line.Color = color;
+    line.OnTop = true;
+    line.HeadSize = 0.2;
+    DebugDraw.Add(line);
+  }
 }

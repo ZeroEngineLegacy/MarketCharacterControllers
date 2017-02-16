@@ -7,67 +7,69 @@
 /* Brief: A simple 3D input interpreter for a 3D platformer.                                                */
 /************************************************************************************************************/
 
-class KeyboardInterpreter3D : ZilchComponent
-{
-    [Property]
-    var ForwardKey : Keys = Keys.W;
-    
-    [Property]
-    var BackwardKey : Keys = Keys.S;
-    
-    [Property]
-    var LeftKey : Keys = Keys.A;
-    
-    [Property]
-    var RightKey : Keys = Keys.D;
-    
-    [Property]
-    var JumpKey : Keys = Keys.Space;
-    
-    [Property]
-    var SprintKey : Keys = Keys.Shift;
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    }
-
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-        //Determine whether the player wants to move left or right
-        var moveDir = Real3();
-        if(Zero.Keyboard.KeyIsDown(this.LeftKey))
-            moveDir.X += 1;
-        if(Zero.Keyboard.KeyIsDown(this.RightKey))
-            moveDir.X += -1;
-        if(Zero.Keyboard.KeyIsDown(this.ForwardKey))
-            moveDir.Y += 1;
-        if(Zero.Keyboard.KeyIsDown(this.BackwardKey))
-            moveDir.Y += -1;
-            
-        
-        var moveEvent = CharMoveEvent3D();
-        moveEvent.MoveDir = moveDir;
-        
-        //Determine if the player wants to sprint
-        if(Zero.Keyboard.KeyIsDown(this.SprintKey))
-            moveEvent.SprintKeyDown = true;
-        
-        //Inform the character controller if the player wishes to jump
-        if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
-            moveEvent.JumpKeyPressed = true;
-        
-        //Inform the character controller of the player's desired movement
-        this.Owner.DispatchEvent(Events.CharMoveEvent3D, moveEvent);
-    }
-}
-
 class CharMoveEvent3D : ZilchEvent
 {
-    sends CharMoveEvent3D : CharMoveEvent3D;
+  var MoveDir : Real3;
+  var SprintKeyDown : Boolean = false;
+  var JumpKeyPressed : Boolean = false;
+}
+
+class KeyboardInterpreter3D : ZilchComponent
+{
+  sends CharMoveEvent3D : CharMoveEvent3D;
+  
+  [Property]
+  var ForwardKey : Keys = Keys.W;
+
+  [Property]
+  var BackwardKey : Keys = Keys.S;
+
+  [Property]
+  var LeftKey : Keys = Keys.A;
+
+  [Property]
+  var RightKey : Keys = Keys.D;
+
+  [Property]
+  var JumpKey : Keys = Keys.Space;
+
+  [Property]
+  var SprintKey : Keys = Keys.Shift;
+
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // Determine whether the player wants to move left or right
+    var moveDir = Real3();
     
-    //Oriented left or right based on ground slope.
-    var MoveDir : Real3;
-    var SprintKeyDown : Boolean = false;
-    var JumpKeyPressed : Boolean = false;
+    if (Zero.Keyboard.KeyIsDown(this.LeftKey))
+    {
+      moveDir.X += 1;
+    }
+    if (Zero.Keyboard.KeyIsDown(this.RightKey))
+    {
+      moveDir.X += -1;
+    }
+    if (Zero.Keyboard.KeyIsDown(this.ForwardKey))
+    {
+      moveDir.Y += 1;
+    }
+    if (Zero.Keyboard.KeyIsDown(this.BackwardKey))
+    {
+      moveDir.Y += -1;
+    }
+    
+    var moveEvent = CharMoveEvent3D();
+    
+    moveEvent.MoveDir = moveDir;
+    moveEvent.SprintKeyDown = Zero.Keyboard.KeyIsDown(this.SprintKey);
+    moveEvent.JumpKeyPressed = Zero.Keyboard.KeyIsPressed(this.JumpKey);
+    
+    // Inform the character controller of the player's desired movement
+    this.Owner.DispatchEvent(Events.CharMoveEvent3D, moveEvent);
+  }
 }
