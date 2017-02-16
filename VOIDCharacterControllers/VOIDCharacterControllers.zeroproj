@@ -20,6 +20,10 @@ Cog
 		var ScriptReloadGame = ScriptReloadMethod.PatchObjects
 		var AutoUpdateContentChanges = true
 	}
+	ProjectSettings 
+	{
+		var EditorMode = EditorMode.Mode3D
+	}
 	LauncherProjectInfo 
 	{
 		var Tags = ""
@@ -28,9 +32,5 @@ Cog
 		var MinorVersion = 0
 		var PatchVersion = 0
 		var RevisionId = 15450
-	}
-	ProjectSettings 
-	{
-		var EditorMode = EditorMode.Mode3D
 	}
 }

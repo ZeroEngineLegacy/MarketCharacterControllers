@@ -29,6 +29,11 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = true
 		}
+		UISpaceCreator 
+		{
+			var UILevel = "58c4550acdb4768f:Instructions"
+			var UISpace = "576f215c0825de61:Space"
+		}
 	}
 	Cog 
 	{
@@ -36,9 +41,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-12.6719437, 8.28222752, 44.2577553}
+			var Translation = Vec3{-22.3024864, 7.35087061, 40.1893921}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0964984074, -0.147962481, -0.0145078469, 0.98416698}
+			var Rotation = Quat{-0.0840667263, -0.262868673, -0.0229980294, 0.960887134}
 		}
 		Camera 
 		{
@@ -96,8 +101,8 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var LookDistance = 45.24189
-			var VerticalAngle = 0.19547686
-			var HorizontalAngle = 0.29845047
+			var VerticalAngle = 0.17453292
+			var HorizontalAngle = 0.534070134
 			var LookTarget = Vec3{0.377608985, -0.505301058, 1.83939195}
 			var MoveSensitivity = 1
 		}
@@ -315,7 +320,7 @@ Level
 		{
 			var MoveForce = 10
 			var SprintModifier = 2
-			var JumpForce = 250
+			var JumpForce = 150
 			var MaxGroundSpeed = 25
 			var MaxJumpCount = 2
 		}
@@ -336,6 +341,62 @@ Level
 			var IndirectLighting = true
 			var IndirectIntensity = 1
 			var ToneMap = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 9
+		Transform 
+		{
+			var Translation = Vec3{2.18823695, 0.998586118, 0}
+			var Scale = Vec3{2.96101785, 1, 1}
+			var Rotation = Quat{0, 0, 0.146254838, 0.989246964}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 10
+		Transform 
+		{
+			var Translation = Vec3{-5.27770233, 0.617254734, 0}
+			var Scale = Vec3{2.96101785, 1, 1}
+			var Rotation = Quat{0, 0, 0.0162884593, 0.99986738}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
 		}
 	}
 }

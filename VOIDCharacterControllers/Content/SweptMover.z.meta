@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SweptMover"
+		var ResourceId = 0x58c44da347efd6a7
+	}
+}

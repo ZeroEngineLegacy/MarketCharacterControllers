@@ -56,11 +56,11 @@ class KeyboardInterpreter3D : ZilchComponent
     }
     if (Zero.Keyboard.KeyIsDown(this.ForwardKey))
     {
-      moveDir.Y += 1;
+      moveDir.Z += 1;
     }
     if (Zero.Keyboard.KeyIsDown(this.BackwardKey))
     {
-      moveDir.Y += -1;
+      moveDir.Z += -1;
     }
     
     var moveEvent = CharMoveEvent3D();

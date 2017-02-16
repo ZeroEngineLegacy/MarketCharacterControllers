@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "ForceBasedPlatformer2D"
-		var ResourceId = 0x576f215c0825c3a8
+		var Name = "Instructions"
+		var ResourceId = 0x58c4550acdb4768f
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,7 +13,7 @@ DataContent
 	{
 		var Tags = Array
 		{
-			"Demo"
+			"UI"
 		}
 	}
 }

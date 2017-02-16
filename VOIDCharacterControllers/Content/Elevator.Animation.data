@@ -1,0 +1,159 @@
+[Version:1]
+RichAnimation 
+{
+	var SampleTolerance = 0.0500000007
+	var Duration = 0.181853145
+	var Root = Object
+	{
+		var Type = TrackType.Object
+		var Name = "Root"
+		var Path = ""
+		var Disabled = false
+		var PropertyTypeId = 0
+		var PropertyTypeName = "void"
+		var KeyFrames = Array
+		{
+		}
+		var Children = Array
+		{
+			Object
+			{
+				var Type = TrackType.Object
+				var Name = "/"
+				var Path = "/"
+				var Disabled = false
+				var PropertyTypeId = 0
+				var PropertyTypeName = ""
+				var KeyFrames = Array
+				{
+				}
+				var Children = Array
+				{
+					Object
+					{
+						var Type = TrackType.Component
+						var Name = "Transform"
+						var Path = "Transform"
+						var Disabled = false
+						var PropertyTypeId = 0
+						var PropertyTypeName = ""
+						var KeyFrames = Array
+						{
+						}
+						var Children = Array
+						{
+							Object
+							{
+								var Type = TrackType.Property
+								var Name = "Translation"
+								var Path = "Transform.Translation"
+								var Disabled = false
+								var PropertyTypeId = 13
+								var PropertyTypeName = "Vec3"
+								var KeyFrames = Array
+								{
+								}
+								var Children = Array
+								{
+									Object
+									{
+										var Type = TrackType.SubProperty
+										var Name = "X"
+										var Path = "Transform.Translation.X"
+										var Disabled = false
+										var PropertyTypeId = 10
+										var PropertyTypeName = ""
+										var KeyFrames = Array
+										{
+											Object
+											{
+												var key = 0
+												var value = Object
+												{
+													var Time = 0
+													var Value = -28.8753624
+													var TangentIn = Vec2{-0.0500000007, 0}
+													var TangentOut = Vec2{0.0500000007, 0}
+													var EditorFlags = 0
+												}
+											}
+										}
+										var Children = Array
+										{
+										}
+									}
+									Object
+									{
+										var Type = TrackType.SubProperty
+										var Name = "Y"
+										var Path = "Transform.Translation.Y"
+										var Disabled = false
+										var PropertyTypeId = 10
+										var PropertyTypeName = ""
+										var KeyFrames = Array
+										{
+											Object
+											{
+												var key = 0
+												var value = Object
+												{
+													var Time = 0
+													var Value = 13.7097702
+													var TangentIn = Vec2{-0.0465396941, -19.6626549}
+													var TangentOut = Vec2{0.0195077602, 1.7436409}
+													var EditorFlags = 9
+												}
+											}
+											Object
+											{
+												var key = 0.181853145
+												var value = Object
+												{
+													var Time = 0.181853145
+													var Value = 0.614957809
+													var TangentIn = Vec2{-0.0320416689, 0.665956497}
+													var TangentOut = Vec2{0.000558684405, -0.049996879}
+													var EditorFlags = 9
+												}
+											}
+										}
+										var Children = Array
+										{
+										}
+									}
+									Object
+									{
+										var Type = TrackType.SubProperty
+										var Name = "Z"
+										var Path = "Transform.Translation.Z"
+										var Disabled = false
+										var PropertyTypeId = 10
+										var PropertyTypeName = ""
+										var KeyFrames = Array
+										{
+											Object
+											{
+												var key = 0
+												var value = Object
+												{
+													var Time = 0
+													var Value = 0.359003782
+													var TangentIn = Vec2{-0.0500000007, 0}
+													var TangentOut = Vec2{0.0500000007, 0}
+													var EditorFlags = 0
+												}
+											}
+										}
+										var Children = Array
+										{
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

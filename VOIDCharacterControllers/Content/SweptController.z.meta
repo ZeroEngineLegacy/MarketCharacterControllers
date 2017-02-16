@@ -11,7 +11,6 @@ TextContent
 		var Tags = Array
 		{
 			"CharacterController"
-			"SweptCharacter"
 		}
 	}
 }

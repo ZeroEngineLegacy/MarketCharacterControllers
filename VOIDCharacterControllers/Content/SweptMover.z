@@ -1,0 +1,75 @@
+/************************************************************************************************************/
+/* Copyright 2017 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/4/2017                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: SweptMover                                                                                        */
+/* Brief: A simple example script that updates and moves the swept controller based on keyboard input.      */
+/************************************************************************************************************/
+
+class SweptMover : ZilchComponent
+{
+  [Dependency]
+  var Transform : Transform = null;
+  
+  [Dependency]
+  var SweptController : SweptController = null;
+  
+  [Dependency]
+  var KeyboardInterpreter3D : KeyboardInterpreter3D = null;
+  
+  [Property]
+  var RotationSpeed : Real = 180.0;
+  
+  var Dt : Real = 1.0 / 60.0;
+  
+  var RotationSpeedRad : Real
+  {
+    get { return Math.ToRadians(this.RotationSpeed); }
+  }
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Owner, Events.CharMoveEvent3D, this.OnCharMoveEvent3D);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.Dt = event.Dt;
+  }
+
+  function OnCharMoveEvent3D(event : CharMoveEvent3D)
+  {
+    // Rotate
+    var rotation = Quaternion.Identity;
+    
+    if (Zero.Keyboard.KeyIsDown(Keys.Right))
+    {
+      rotation = Math.AxisAngle(
+        this.SweptController.WorldUp, -this.RotationSpeedRad * this.Dt
+      );
+    }
+    else if (Zero.Keyboard.KeyIsDown(Keys.Left))
+    {
+      rotation = Math.AxisAngle(
+        this.SweptController.WorldUp, this.RotationSpeedRad * this.Dt
+      );
+    }
+    
+    if (rotation != Quaternion.Identity)
+    {
+      this.Transform.LocalRotation = Math.Multiply(this.Transform.LocalRotation, rotation);
+    }
+    
+    // Move
+    var worldDir = this.Transform.TransformNormal(event.MoveDir);
+    
+    this.SweptController.Update(worldDir, this.Dt);
+    
+    if (event.JumpKeyPressed)
+    {
+      this.SweptController.Jump();
+    }
+  }
+}
