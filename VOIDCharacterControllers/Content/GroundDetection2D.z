@@ -175,9 +175,7 @@ class GroundDetection2D : ZilchComponent
 
   function DrawRay(ray : Ray, len : Real)
   {
-    var line = DebugLine();
-    line.Start = ray.Start;
-    line.End = ray.Start + (ray.Direction * len);
+    var line = DebugLine(ray.Start, ray.Start + (ray.Direction * len));
     line.Color = Real4(1,1,1,1);
     line.OnTop = true;
     line.HeadSize = 0.2;
@@ -186,9 +184,7 @@ class GroundDetection2D : ZilchComponent
 
   function DrawRay(ray : Ray, len : Real, color : Real4)
   {
-    var line = DebugLine();
-    line.Start = ray.Start;
-    line.End = ray.Start + (ray.Direction * len);
+    var line = DebugLine(ray.Start, ray.Start + (ray.Direction * len));
     line.Color = color;
     line.OnTop = true;
     line.HeadSize = 0.2;

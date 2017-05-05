@@ -24,11 +24,11 @@
 // result structure and stored as an independent variable.
 class SweptControllerEvent : ZilchEvent
 {
-    var Result : ContinuousResult = null;
+    var Result : SweepResult = null;
     
     constructor() : base() {}
     
-    constructor(result : ContinuousResult) : base()
+    constructor(result : SweepResult) : base()
     {
         this.Result = result;
     }
@@ -188,7 +188,7 @@ class SweptController : ZilchComponent
     this.AirTraction = 1.0;
     
     // Only want to resolve collision with static and kinematic.
-    this.CastFilter = this.Space.PhysicsSpace.CreateDefaultCastFilter();
+    this.CastFilter = CastFilter();
     this.CastFilter.IgnoreDynamic = true;
     this.CastFilter.IgnoreGhost = true;
     this.CastFilter.IgnoreKinematic = false;
@@ -424,9 +424,9 @@ class SweptController : ZilchComponent
       
       // ContinuousCollider computes the time of impact for every object encountered in
       // the collider's trajectory with the given velocity and timestep, sorted by first time of impact.
-      var continuousResultRange = this.Space.PhysicsSpace.ContinuousCollider(this.Collider, sweepVelocity, timeLeft, this.CastFilter);
+      var sweepResultRange = this.Space.PhysicsSpace.SweepCollider(this.Collider, sweepVelocity, timeLeft, this.CastFilter);
       
-      foreach (var result in continuousResultRange)
+      foreach (var result in sweepResultRange)
       {
         // Normal of the contacted surface.
         var normal = result.WorldNormalTowardsSelf;
@@ -615,9 +615,9 @@ class SweptController : ZilchComponent
       // Passing a timestep of 1 makes a displacement no different than velocity.
       // Time of impacts will return a value between 0 and 1,
       // effectively parameterizing the allowed snap distance.
-      var continuousResultRange = this.Space.PhysicsSpace.ContinuousCollider(this.Collider, maxDisplacement, 1.0, this.CastFilter);
+      var sweepResultRange = this.Space.PhysicsSpace.SweepCollider(this.Collider, maxDisplacement, 1.0, this.CastFilter);
       
-      foreach (var result in continuousResultRange)
+      foreach (var result in sweepResultRange)
       {
         var normal = result.WorldNormalTowardsSelf;
         var relativeVel = -Math.Dot(normal, maxDisplacement);
@@ -691,7 +691,7 @@ class SweptController : ZilchComponent
   }
 
   // Sends out script event and adds it to the tracker if needed.
-  function SendCollisionEvent(eventName : String, result : ContinuousResult)
+  function SendCollisionEvent(eventName : String, result : SweepResult)
   {
     if (this.ForwardEvents && this.Owner.CustomCollisionEventTracker != null)
     {
