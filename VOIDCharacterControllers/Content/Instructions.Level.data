@@ -138,6 +138,7 @@ Level
 		ShadowRenderer 
 		{
 			var ResolutionValue = ShadowResolution.High
+			var NormalOffsetBias = 0.100000001
 		}
 		Model 
 		{
@@ -148,15 +149,13 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = ""
-			var Mesh = ""
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
 		}
 		DirectionalLight 
 		{
-			var LightColorValue = Real3{1, 1, 1}
-			var LightIntensityValue = 2
-			var CastShadowsValue = true
-			var NormalOffsetBias = 0.100000001
+			var LightColor = Real4{1, 1, 1, 1}
+			var LightIntensity = 1
 		}
 		Hierarchy 
 		{
@@ -168,9 +167,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{-7.63872862, 7.87787628, 8.95808411}
+			var Translation = Real3{-7.06610441, 5.36674261, 6.22798204}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0688773692, -0.0156700257, -0.00108201441, 0.997501493}
+			var Rotation = Quaternion{-0.0191968381, -0.00785247143, -0.000150775188, 0.999784946}
 		}
 		CameraViewport 
 		{
@@ -227,10 +226,10 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 9.0483799
-			var VerticalAngle = 0.137880936
-			var HorizontalAngle = 0.0314159468
-			var LookTarget = Real3{-7.35720921, 6.6342268, 9.53674316e-07}
+			var LookDistance = 6.06530666
+			var VerticalAngle = 0.0383972153
+			var HorizontalAngle = 0.0157079808
+			var LookTarget = Real3{-6.97090483, 5.13390875, 0.167893618}
 			var MoveSensitivity = 1
 		}
 	}
@@ -306,7 +305,7 @@ Level
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Real3{-8.00788879, 6.6342268, 9.53674316e-07}
+			var Translation = Real3{-9, 7, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -324,7 +323,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "[WASD] Move"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 32
+			var FontSize = 64
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Left
 		}
@@ -335,7 +334,7 @@ Level
 		var LinkId = 7
 		Transform 
 		{
-			var Translation = Real3{-8.00788879, 6.3837862, 9.53674316e-07}
+			var Translation = Real3{-9, 6.5, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -353,7 +352,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "[Space] Jump"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 32
+			var FontSize = 64
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Left
 		}
@@ -364,7 +363,7 @@ Level
 		var LinkId = 8
 		Transform 
 		{
-			var Translation = Real3{-8.00788879, 6.13031197, 9.53674316e-07}
+			var Translation = Real3{-9, 6, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -382,7 +381,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Text = "[Arrows] Rotate"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
-			var FontSize = 32
+			var FontSize = 64
 			var PixelsPerUnit = 128
 			var TextAlign = TextAlign.Left
 		}
