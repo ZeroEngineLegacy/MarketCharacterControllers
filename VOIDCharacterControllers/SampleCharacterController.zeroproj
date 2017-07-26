@@ -4,7 +4,7 @@ Cog
 	var Name = ""
 	ProjectSettings 
 	{
-		var ProjectName = "VOIDCharacterControllers"
+		var ProjectName = "SampleCharacterController"
 		var ProjectOwner = ""
 		var DefaultLevel = "Level"
 		var ProjectSpace = "Space"
@@ -27,11 +27,11 @@ Cog
 	LauncherProjectInfo 
 	{
 		var Tags = ""
-		var ExperimentalBranchName = "BraveCobra"
-		var MajorVersion = 0
+		var ExperimentalBranchName = ""
+		var MajorVersion = 1
 		var MinorVersion = 0
 		var PatchVersion = 0
-		var RevisionId = 16993
+		var RevisionId = 0
 		var ShortChangeSet = ""
 	}
 }

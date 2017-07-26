@@ -2,15 +2,14 @@
 RichAnimation 
 {
 	var SampleTolerance = 0.0500000007
-	var Duration = 1.10000002
+	var Duration = 0.200000003
 	var Root = Object
 	{
 		var Type = TrackType.Object
 		var Name = "Root"
 		var Path = ""
 		var Disabled = false
-		var PropertyTypeId = 0
-		var PropertyTypeName = "void"
+		var PropertyTypeName = "Void"
 		var KeyFrames = Array
 		{
 		}
@@ -22,7 +21,6 @@ RichAnimation
 				var Name = "/"
 				var Path = "/"
 				var Disabled = false
-				var PropertyTypeId = 0
 				var PropertyTypeName = ""
 				var KeyFrames = Array
 				{
@@ -35,7 +33,6 @@ RichAnimation
 						var Name = "Transform"
 						var Path = "Transform"
 						var Disabled = false
-						var PropertyTypeId = 0
 						var PropertyTypeName = ""
 						var KeyFrames = Array
 						{
@@ -48,8 +45,7 @@ RichAnimation
 								var Name = "Translation"
 								var Path = "Transform.Translation"
 								var Disabled = false
-								var PropertyTypeId = 13
-								var PropertyTypeName = "Vec3"
+								var PropertyTypeName = "Real3"
 								var KeyFrames = Array
 								{
 								}
@@ -61,8 +57,7 @@ RichAnimation
 										var Name = "X"
 										var Path = "Transform.Translation.X"
 										var Disabled = false
-										var PropertyTypeId = 10
-										var PropertyTypeName = ""
+										var PropertyTypeName = "Real"
 										var KeyFrames = Array
 										{
 											Object
@@ -71,93 +66,21 @@ RichAnimation
 												var value = Object
 												{
 													var Time = 0
-													var Value = -28.0607643
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.166390315
-												var value = Object
-												{
-													var Time = 0.166390315
-													var Value = -28.0607643
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.333430648
-												var value = Object
-												{
-													var Time = 0.333430648
-													var Value = 1.93935013
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.499799043
-												var value = Object
-												{
-													var Time = 0.499799043
-													var Value = 1.93935013
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.666666687
-												var value = Object
-												{
-													var Time = 0.666666687
-													var Value = -42.4694023
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.832917869
-												var value = Object
-												{
-													var Time = 0.832917869
-													var Value = -42.4694023
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1
-												var value = Object
-												{
-													var Time = 1
-													var Value = -28.0599976
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1.10000002
-												var value = Object
-												{
-													var Time = 1.10000002
 													var Value = -28.0610847
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
+													var EditorFlags = 0
+												}
+											}
+											Object
+											{
+												var key = 0.200000003
+												var value = Object
+												{
+													var Time = 0.200000003
+													var Value = -28.0610847
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
 													var EditorFlags = 0
 												}
 											}
@@ -172,8 +95,7 @@ RichAnimation
 										var Name = "Y"
 										var Path = "Transform.Translation.Y"
 										var Disabled = false
-										var PropertyTypeId = 10
-										var PropertyTypeName = ""
+										var PropertyTypeName = "Real"
 										var KeyFrames = Array
 										{
 											Object
@@ -182,93 +104,21 @@ RichAnimation
 												var value = Object
 												{
 													var Time = 0
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
+													var Value = 12.5962496
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
 													var EditorFlags = 0
 												}
 											}
 											Object
 											{
-												var key = 0.166390315
+												var key = 0.200000003
 												var value = Object
 												{
-													var Time = 0.166390315
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.333430648
-												var value = Object
-												{
-													var Time = 0.333430648
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.499799043
-												var value = Object
-												{
-													var Time = 0.499799043
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.666666687
-												var value = Object
-												{
-													var Time = 0.666666687
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.832917869
-												var value = Object
-												{
-													var Time = 0.832917869
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1
-												var value = Object
-												{
-													var Time = 1
-													var Value = 13.7650528
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1.10000002
-												var value = Object
-												{
-													var Time = 1.10000002
-													var Value = 13.7650537
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
+													var Time = 0.200000003
+													var Value = 12.5962496
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
 													var EditorFlags = 0
 												}
 											}
@@ -283,8 +133,7 @@ RichAnimation
 										var Name = "Z"
 										var Path = "Transform.Translation.Z"
 										var Disabled = false
-										var PropertyTypeId = 10
-										var PropertyTypeName = ""
+										var PropertyTypeName = "Real"
 										var KeyFrames = Array
 										{
 											Object
@@ -293,93 +142,21 @@ RichAnimation
 												var value = Object
 												{
 													var Time = 0
-													var Value = -12.7067928
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
+													var Value = -12.8713627
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
 													var EditorFlags = 0
 												}
 											}
 											Object
 											{
-												var key = 0.166390315
+												var key = 0.200000003
 												var value = Object
 												{
-													var Time = 0.166390315
-													var Value = -30.3492565
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.333430648
-												var value = Object
-												{
-													var Time = 0.333430648
-													var Value = -30.3492565
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.499799043
-												var value = Object
-												{
-													var Time = 0.499799043
-													var Value = 14.3017998
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.666666687
-												var value = Object
-												{
-													var Time = 0.666666687
-													var Value = 14.3017998
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 0.832917869
-												var value = Object
-												{
-													var Time = 0.832917869
-													var Value = -13.6841669
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1
-												var value = Object
-												{
-													var Time = 1
-													var Value = -12.7099991
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
-													var EditorFlags = 0
-												}
-											}
-											Object
-											{
-												var key = 1.10000002
-												var value = Object
-												{
-													var Time = 1.10000002
-													var Value = -12.7100735
-													var TangentIn = Vec2{-0.0500000007, 0}
-													var TangentOut = Vec2{0.0500000007, 0}
+													var Time = 0.200000003
+													var Value = -19.9265327
+													var TangentIn = Real2{-0.0500000007, 0}
+													var TangentOut = Real2{0.0500000007, 0}
 													var EditorFlags = 0
 												}
 											}
