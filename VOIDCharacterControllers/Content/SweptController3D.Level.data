@@ -39,10 +39,11 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
-		UISpaceCreator 
+		SpaceCreator 
 		{
-			var UILevel = "58c4550acdb4768f:Instructions"
-			var UISpace = "576f215c0825de61:Space"
+			var SpaceArchetype = "4e39ae0ad564493d:DefaultSpace"
+			var NewSpaceName = "UiSpace"
+			var LevelToLoad = "58c4550acdb4768f:Instructions"
 		}
 	}
 	Cog 
@@ -92,7 +93,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{0, 50, 50}
-			var Scale = Real3{1, 1, 1}
+			var Scale = Real3{4.35731554, 4.35731554, 4.35731554}
 			var Rotation = Quaternion{-0.382683456, 0, 0, 0.923879504}
 		}
 		CameraViewport 
@@ -144,7 +145,7 @@ Level
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 64
+			var Size = 100
 		}
 		ShadowRenderer 
 		{
@@ -178,9 +179,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{10.7943058, 10.4336853, -64.4787369}
+			var Translation = Real3{-21.8414345, 16.6373215, -7.31319571}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.00913693476, 0.990765512, 0.102386065, 0.0884157717}
+			var Rotation = Quaternion{-0.17850928, 0.56521821, 0.126859397, 0.795342445}
 		}
 		CameraViewport 
 		{
@@ -237,22 +238,22 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 27.182909
-			var VerticalAngle = 0.205949664
-			var HorizontalAngle = 34.735527
-			var LookTarget = Real3{6.08276558, 4.87486649, -38.2907372}
+			var LookDistance = 3.67423677
+			var VerticalAngle = 0.441568911
+			var HorizontalAngle = 30.1802368
+			var LookTarget = Real3{-24.9784718, 15.0671053, -8.40563965}
 			var MoveSensitivity = 1
 		}
 	}
 	Cog 
 	{
-		var Name = "Cylinder"
+		var Name = "Player"
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{6.08276558, 2, -32.9493179}
+			var Translation = Real3{-24.9784718, 15.0671053, -8.40563965}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, 0, 0, 1}
+			var Rotation = Quaternion{-0, 1, -0, -4.37113883e-08}
 		}
 		RigidBody 
 		{
@@ -280,8 +281,8 @@ Level
 			var WorldUp = Real3{0, 1, 0}
 			var LockZAxis = false
 			var ForwardEvents = false
-			var Gravity = 10
-			var JumpSpeed = 6
+			var Gravity = 15
+			var JumpSpeed = 8
 			var JumpCancelFactor = 0.5
 			var MaxMoveSpeed = 10
 			var MaxFallSpeed = 50
@@ -291,7 +292,7 @@ Level
 			var AirDeceleration = 15
 			var MaxGroundSlope = 45
 			var MaxCeilingSlope = 45
-			var GroundSnapDistance = 0.100000001
+			var GroundSnapDistance = 0.200000003
 			var ControllerVelocity = Real3{0, 0, 0}
 			var Grounded = true
 			var Jumping = false
@@ -311,8 +312,6 @@ Level
 			var ForwardKey = Keys.W
 			var BackKey = Keys.S
 			var JumpKey = Keys.Space
-			var RotationSpeed = 0.5
-			var TrapMouse = true
 		}
 		Hierarchy 
 		{
@@ -386,6 +385,11 @@ Level
 					var GlobalUp = Real3{0, 1, 0}
 					var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 					var DefaultBases = OrientationBases.ForwardNegativeZUpY
+				}
+				SampleCameraControl 
+				{
+					var RightMouseToMove = false
+					var MouseSensitivity = 10
 				}
 			}
 			Cog 
@@ -614,7 +618,7 @@ Level
 				var LinkId = 14
 				Transform 
 				{
-					var Translation = Real3{-28.0610847, 13.7650537, -12.7100735}
+					var Translation = Real3{-28.0610847, 12.5962496, -12.8713627}
 					var Scale = Real3{7.27446318, 1, 4.90949821}
 					var Rotation = Quaternion{0, 0, 0, 1}
 				}
@@ -632,7 +636,7 @@ Level
 				}
 				RigidBody 
 				{
-					var Velocity = Real3{0, 0, 0}
+					var Velocity = Real3{0, -73.0502548, -10.080575}
 					var AngularVelocity = Real3{0, 0, 0}
 					var DynamicState = RigidBodyDynamicState.Kinematic
 					var AllowSleep = true
@@ -669,7 +673,7 @@ Level
 				var LinkId = 15
 				Transform 
 				{
-					var Translation = Real3{-14.5697165, 8.46878624, -6.21908855}
+					var Translation = Real3{-13.842289, 7.30750751, -6.21908855}
 					var Scale = Real3{20.5208588, 1, 7.59895325}
 					var Rotation = Quaternion{0, 0, -0.271511137, 0.962435365}
 				}
@@ -765,7 +769,7 @@ Level
 				var LinkId = 18
 				Transform 
 				{
-					var Translation = Real3{-28.0645123, 13.7600002, -6.21908855}
+					var Translation = Real3{-27.3280067, 12.5962496, -6.21908855}
 					var Scale = Real3{10, 1, 7.59895325}
 					var Rotation = Quaternion{0, 0, 0, 1}
 				}
