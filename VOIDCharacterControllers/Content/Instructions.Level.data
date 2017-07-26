@@ -248,8 +248,8 @@ Level
 			var RenderInEditor = false
 			var RenderInGame = true
 			var RenderToViewport = true
-			var ForwardViewportEvents = false
-			var RenderOrder = 0
+			var ForwardViewportEvents = true
+			var RenderOrder = 1
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath

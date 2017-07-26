@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "ForceBasedPlatformer2D"
-		var ResourceId = 0x576f215c0825c3a8
+		var Name = "SweptController2D"
+		var ResourceId = 0x59208faf6d9e90f1
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true

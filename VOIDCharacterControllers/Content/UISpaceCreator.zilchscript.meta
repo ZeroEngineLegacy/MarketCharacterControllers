@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "UISpaceCreator"
-		var ResourceId = 0x58c45482b69c174c
-	}
-}
