@@ -2,4 +2,4 @@
 syntax: glob
 
 # Don't commit the editor preview
-VOIDCharacterControllers/EditorContent/
+EditorContent/

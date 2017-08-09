@@ -1,10 +1,9 @@
 [Version:1]
 Level 
 {
-	Cog 
+	Cog [ContextId:1]
 	{
 		var Name = "LevelSettings"
-		var LinkId = 1
 		GravityEffect 
 		{
 			var Active = true
@@ -46,10 +45,9 @@ Level
 			var LevelToLoad = "58c4550acdb4768f:Instructions"
 		}
 	}
-	Cog 
+	Cog [ContextId:2]
 	{
 		var Name = "Renderer"
-		var LinkId = 2
 		DeferredRenderer 
 		{
 			var GeometryDebug = GeometryValue.None
@@ -86,10 +84,9 @@ Level
 			var DebugBuffer = false
 		}
 	}
-	Cog 
+	Cog [ContextId:3]
 	{
 		var Name = "DirectionalLight"
-		var LinkId = 3
 		Transform 
 		{
 			var Translation = Real3{0, 50, 50}
@@ -100,11 +97,7 @@ Level
 		{
 			var RenderInEditor = true
 			var RenderInGame = true
-			var RenderToViewport = false
-			var ForwardViewportEvents = false
 			var RenderOrder = -1
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -115,7 +108,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var Cog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -130,14 +123,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var Cog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1, 1}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = false
+			var ForwardViewportEvents = false
 			var ViewportScaling = ViewportScaling.Fill
 			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -173,25 +170,20 @@ Level
 		{
 		}
 	}
-	Cog 
+	Cog [ContextId:4]
 	{
 		var Name = "EditorCamera"
-		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{0.142057419, 22.809166, -12.1329155}
+			var Translation = Real3{4.06153488, 22.7008133, -56.9466629}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.123769023, 0.687295794, 0.120570712, 0.705527127}
+			var Rotation = Quaternion{-0.0529771186, 0.939988315, 0.290076673, 0.171671242}
 		}
 		CameraViewport 
 		{
 			var RenderInEditor = true
 			var RenderInGame = false
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -202,7 +194,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4
+				var Cog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -217,14 +209,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var Cog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1920, 1080}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var ViewportScaling = ViewportScaling.Fill
 			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -239,25 +235,24 @@ Level
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
 			var LookDistance = 30.0044365
-			var VerticalAngle = 0.347321212
-			var HorizontalAngle = 29.8713074
-			var LookTarget = Real3{-28.0610847, 12.5962496, -12.8713627}
+			var VerticalAngle = 0.598648608
+			var HorizontalAngle = 28.6356144
+			var LookTarget = Real3{-4.69984436, 5.79251385, -33.7601624}
 			var MoveSensitivity = 1
 		}
 	}
-	Cog [InheritId:"592e7570a263596b:SweptPlayer3D"]
+	Cog [InheritId:"592e7570a263596b:SweptPlayer3D"][ContextId:5]
 	{
 		Transform 
 		{
-			var Translation = Real3{-24.9784718, 15.0671053, -8.40563965}
+			var Translation = Real3{0.225809097, 1.81717873, -37.7539825}
 			var Rotation = Quaternion{-0, 1, -0, -4.37113883e-08}
 			var Scale = Real3{1, 1, 1}
 		}
 	}
-	Cog 
+	Cog [ContextId:6]
 	{
 		var Name = "LevelGeometry"
-		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -266,10 +261,9 @@ Level
 		}
 		Hierarchy 
 		{
-			Cog 
+			Cog [ContextId:7]
 			{
 				var Name = "Cube"
-				var LinkId = 6
 				Transform 
 				{
 					var Translation = Real3{22.3241692, 3.09311724, 6.65902615}
@@ -298,10 +292,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:8]
 			{
 				var Name = "Cube"
-				var LinkId = 7
 				Transform 
 				{
 					var Translation = Real3{22.9242954, 3.09311724, 1.35637856}
@@ -330,10 +323,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:9]
 			{
 				var Name = "Cube"
-				var LinkId = 8
 				Transform 
 				{
 					var Translation = Real3{23.9819603, 1.72332811, -14.4835167}
@@ -362,10 +354,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:10]
 			{
 				var Name = "Cube"
-				var LinkId = 9
 				Transform 
 				{
 					var Translation = Real3{0, 0, 0}
@@ -394,10 +385,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:11]
 			{
 				var Name = "Cube"
-				var LinkId = 10
 				Transform 
 				{
 					var Translation = Real3{-28.8753624, 12.5962, 0.359003782}
@@ -418,7 +408,7 @@ Level
 				}
 				RigidBody 
 				{
-					var Velocity = Real3{0, 362.257538, 0}
+					var Velocity = Real3{0, 0, 0}
 					var AngularVelocity = Real3{0, 0, 0}
 					var DynamicState = RigidBodyDynamicState.Kinematic
 					var AllowSleep = true
@@ -449,10 +439,9 @@ Level
 					var PlayMode = AnimationPlayMode.Pingpong
 				}
 			}
-			Cog 
+			Cog [ContextId:12]
 			{
 				var Name = "Cube"
-				var LinkId = 11
 				Transform 
 				{
 					var Translation = Real3{-28.0610847, 12.5962496, -19.9265327}
@@ -473,7 +462,7 @@ Level
 				}
 				RigidBody 
 				{
-					var Velocity = Real3{0, 0, -440.94809}
+					var Velocity = Real3{0, 0, 0}
 					var AngularVelocity = Real3{0, 0, 0}
 					var DynamicState = RigidBodyDynamicState.Kinematic
 					var AllowSleep = true
@@ -504,10 +493,9 @@ Level
 					var PlayMode = AnimationPlayMode.Pingpong
 				}
 			}
-			Cog 
+			Cog [ContextId:13]
 			{
 				var Name = "Cube"
-				var LinkId = 12
 				Transform 
 				{
 					var Translation = Real3{-13.842289, 7.30750751, -6.21908855}
@@ -536,10 +524,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:14]
 			{
 				var Name = "Cube"
-				var LinkId = 13
 				Transform 
 				{
 					var Translation = Real3{23.3841496, 2.73751712, -3.9662571}
@@ -568,10 +555,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:15]
 			{
 				var Name = "Cube"
-				var LinkId = 14
 				Transform 
 				{
 					var Translation = Real3{0, 1.9526298, -6.21908855}
@@ -600,10 +586,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:16]
 			{
 				var Name = "Cube"
-				var LinkId = 15
 				Transform 
 				{
 					var Translation = Real3{-27.3280067, 12.5962496, -6.21908855}
@@ -632,10 +617,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:17]
 			{
 				var Name = "Cube"
-				var LinkId = 16
 				Transform 
 				{
 					var Translation = Real3{24.2195988, 1.18727016, -20.0243187}
@@ -664,10 +648,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:18]
 			{
 				var Name = "Cube"
-				var LinkId = 17
 				Transform 
 				{
 					var Translation = Real3{21.9029408, 3.52218819, 11.8550673}
@@ -696,10 +679,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:19]
 			{
 				var Name = "Cube"
-				var LinkId = 18
 				Transform 
 				{
 					var Translation = Real3{23.7246799, 2.2454145, -9.19624615}
@@ -728,10 +710,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:20]
 			{
 				var Name = "Cube"
-				var LinkId = 19
 				Transform 
 				{
 					var Translation = Real3{24.2195988, 0.548725247, -25.2544365}
@@ -760,10 +741,9 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog 
+			Cog [ContextId:21]
 			{
 				var Name = "Cube"
-				var LinkId = 20
 				Transform 
 				{
 					var Translation = Real3{0, 0.94072032, -10.1286964}
@@ -794,10 +774,9 @@ Level
 			}
 		}
 	}
-	Cog 
+	Cog [ContextId:22]
 	{
 		var Name = "Cube"
-		var LinkId = 21
 		Transform 
 		{
 			var Translation = Real3{-0.324262798, 3.20470476, 21.228426}
@@ -836,10 +815,9 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog 
+	Cog [ContextId:23]
 	{
 		var Name = "Cube"
-		var LinkId = 22
 		Transform 
 		{
 			var Translation = Real3{-0.324262798, 4.77998161, 19.9069271}
@@ -878,10 +856,9 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog 
+	Cog [ContextId:24]
 	{
 		var Name = "Cube"
-		var LinkId = 23
 		Transform 
 		{
 			var Translation = Real3{3.65349174, 4.85996723, 21.228426}
@@ -920,10 +897,9 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog 
+	Cog [ContextId:25]
 	{
 		var Name = "Sphere"
-		var LinkId = 24
 		Transform 
 		{
 			var Translation = Real3{0.261130393, 7.11798668, 20.4862823}
@@ -962,10 +938,9 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog 
+	Cog [ContextId:26]
 	{
 		var Name = "Sphere"
-		var LinkId = 25
 		Transform 
 		{
 			var Translation = Real3{0.261130393, 5.93966484, 22.185894}
@@ -1004,10 +979,9 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog 
+	Cog [ContextId:27]
 	{
 		var Name = "Sphere"
-		var LinkId = 26
 		Transform 
 		{
 			var Translation = Real3{-0.707772672, 7.61513805, 22.185894}
@@ -1046,10 +1020,9 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog 
+	Cog [ContextId:28]
 	{
 		var Name = "Wedge"
-		var LinkId = 27
 		Transform 
 		{
 			var Translation = Real3{2.2620213, 8.26821232, 20.8411846}

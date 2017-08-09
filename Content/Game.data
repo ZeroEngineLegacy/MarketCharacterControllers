@@ -2,11 +2,10 @@
 GameSession 
 {
 	var Name = ""
-	var LinkId = 1
 	DefaultGameSetup 
 	{
 		var StartingSpace = "576f215c0825de61:Space"
-		var StartingLevel = "577d126becbdd810:EmptyLevel"
+		var StartingLevel = "58c472a4b4b7b647:SweptController3D"
 		var LoadEditingLevel = true
 	}
 	NetPeer 

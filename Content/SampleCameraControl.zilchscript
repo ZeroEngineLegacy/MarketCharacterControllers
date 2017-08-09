@@ -1,7 +1,16 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright 2017 DigiPen USA Corporation, All Rights Reserved
+// Author: Zero Engine Team
+// Last updated by: Nathan Carlson
+// Last update: 7/24/2017
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// A simple character controller for a 3D character controller
 class SampleCameraControl : ZilchComponent
 {
   [Dependency] var Transform : Transform;
   
+  // Should right mouse be used to control camera movement or mosue capture?
   [Property] var RightMouseToMove : Boolean = false;
   [Property] var MouseSensitivity : Real = 10.0;
   
@@ -55,9 +64,11 @@ class SampleCameraControl : ZilchComponent
     var move = event.Movement * 0.005;
     var sensitivity = this.MouseSensitivity / 10.0;
     
+    // Rotate ourself about the x-axis
     var verticalRotation = Math.ToQuaternion(Real3.XAxis, -move.Y * sensitivity);
     this.Transform.RotateLocal(verticalRotation);
     
+    // Rotate our parent about the y-axis
     if (this.Owner.Parent != null)
     {
       var horizontalRotation = Math.ToQuaternion(Real3.YAxis, -move.X * sensitivity);
