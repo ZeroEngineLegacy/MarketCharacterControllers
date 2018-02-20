@@ -65,7 +65,7 @@ Cog
 		var RightKey = Keys.D
 		var JumpKey = Keys.Space
 	}
-	Sprite 
+	Model 
 	{
 		var Visible = true
 		var ViewCulling = true
@@ -74,14 +74,7 @@ Cog
 		var LocalAabbCenter = Real3{0, 0, 0}
 		var LocalAabbHalfExtents = Real3{1, 1, 1}
 		var GroupSortValue = 0
-		var Material = "582c575af53d18c9:AlphaSprite"
-		var VertexColor = Real4{1, 1, 1, 1}
-		var GeometryMode = SpriteGeometryMode.ZPlane
-		var SpriteSource = "5586f1922250b073:CircleBordered"
-		var FlipX = false
-		var FlipY = false
-		var AnimationActive = true
-		var AnimationSpeed = 1
-		var StartFrame = 0
+		var Material = "583afb5e7bf75e18:ZeroMaterial"
+		var Mesh = "4de0354322b376ae:Sphere"
 	}
 }

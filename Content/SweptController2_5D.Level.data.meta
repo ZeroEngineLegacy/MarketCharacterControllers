@@ -5,13 +5,14 @@ DataContent
 	{
 		var Tags = Array
 		{
+			"Demo"
 		}
 	}
 	DataBuilder 
 	{
-		var Name = "SweptPlayer3D"
-		var ResourceId = 0x592e7570a263596b
-		var LoaderType = "Cog"
+		var Name = "SweptController2_5D"
+		var ResourceId = 0x5ada74791e047249
+		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
 	}

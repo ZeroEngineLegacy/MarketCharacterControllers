@@ -61,7 +61,7 @@ class SampleCameraControl : ZilchComponent
     if (this.MoveActive == false)
       return;
     
-    var move = event.Movement * 0.005;
+    var move = Zero.Mouse.RawMovement * 0.005;
     var sensitivity = this.MouseSensitivity / 10.0;
     
     // Rotate ourself about the x-axis
