@@ -35,11 +35,11 @@ class SweptInput3D : ZilchComponent
     else if(Zero.Keyboard.KeyIsDown(this.BackKey))
       movement -= this.Orientation.WorldForward;
     
-    this.SweptController.Update(movement, event.Dt);
-    
     if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
     {
       this.SweptController.Jump();
     }
+    
+    this.SweptController.Update(movement, event.Dt);
   }
 }

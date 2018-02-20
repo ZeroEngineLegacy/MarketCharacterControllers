@@ -29,11 +29,11 @@ class SweptInput2D : ZilchComponent
     if(Zero.Keyboard.KeyIsDown(this.RightKey))
       movement.X = 1;
     
-    this.SweptController.Update(movement, event.Dt);
-    
     if(Zero.Keyboard.KeyIsPressed(this.JumpKey))
     {
       this.SweptController.Jump();
     }
+    
+    this.SweptController.Update(movement, event.Dt);
   }
 }
