@@ -380,7 +380,8 @@ class SweptController : ZilchComponent
     // using the velocity of that object. (for moving platforms and such)
     foreach (var cog in this.KinematicContacts)
     {
-      this.SweptCollision(cog.RigidBody.Velocity, dt, true);
+      if (cog != null)
+        this.SweptCollision(cog.RigidBody.Velocity, dt, true);
     }
     
     // Done after the sweep to stay in contact with the ground when detected.
@@ -721,6 +722,10 @@ class SweptController : ZilchComponent
   // Forwards object to kinematic check.
   function OnCollision(event : CollisionEvent)
   {
+    // Check the cast filter to see if we ignore ghost objects
+    if (this.CastFilter.IgnoreGhost && event.OtherObject.Collider.Ghost)
+      return;
+      
     this.AddIfKinematic(event.OtherObject);
   }
 
