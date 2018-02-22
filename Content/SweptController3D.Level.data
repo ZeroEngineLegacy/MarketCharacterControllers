@@ -67,8 +67,8 @@ Level
 		{
 			var Active = true
 			var Radius = 1
-			var Intensity = 2.20000005
-			var BlurDepthThreshold = 0.0500000007
+			var Intensity = 1
+			var BlurDepthThreshold = 0.100000001
 			var DebugBuffer = false
 		}
 		Bloom 
@@ -175,9 +175,9 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{-14.3638639, 9.44794464, -55.8987999}
+			var Translation = Real3{-16.1521683, 11.7297478, -50.4327507}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0.0355454125, 0.9640674, 0.171726659, -0.199550837}
+			var Rotation = Quaternion{0.0301002245, 0.96245712, 0.11988043, -0.24165906}
 		}
 		CameraViewport 
 		{
@@ -234,10 +234,10 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 25.91366
-			var VerticalAngle = 0.352556705
-			var HorizontalAngle = 27.8661213
-			var LookTarget = Real3{-4.70965195, 0.5, -33.5773239}
+			var LookDistance = 18.5573864
+			var VerticalAngle = 0.247836873
+			var HorizontalAngle = 27.7823334
+			var LookTarget = Real3{-7.65369606, 7.17748213, -34.5762253}
 			var MoveSensitivity = 1
 		}
 	}
@@ -1131,7 +1131,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{-4.70397186, 2.11192703, -41.1356697}
-			var Rotation = Quaternion{-0, 1, -0, -4.37113883e-08}
+			var Rotation = Quaternion{0, 1, 0, -4.37113883e-08}
 			var Scale = Real3{1, 1, 1}
 		}
 	}
