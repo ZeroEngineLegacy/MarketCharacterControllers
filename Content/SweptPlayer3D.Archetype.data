@@ -6,7 +6,7 @@ Cog
 	{
 		var Translation = Real3{-4.70397186, 2.11192703, -41.1356697}
 		var Scale = Real3{1, 1, 1}
-		var Rotation = Quaternion{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		var Rotation = Quaternion{-0, 1, -0, -4.37113883e-08}
 	}
 	RigidBody 
 	{
@@ -66,107 +66,28 @@ Cog
 		var BackKey = Keys.S
 		var JumpKey = Keys.Space
 	}
+	SampleCameraControl 
+	{
+		var RightMouseToMove = false
+		var MouseSensitivity = 10
+		var GameCamera = CogPath
+		{
+			var Path = ":/GameCamera"
+			var ErrorOnResolveToNull = false
+			var ErrorOnPathCantCompute = false
+			var ErrorOnDirectLinkFail = false
+			var UpdateCogOnPathChange = true
+			var UpdatePathOnCogChange = true
+			var UpdateCogOnInitialize = true
+			var ResolvedNullErrorOccurred = false
+			var Cog = 4294967293
+			var PathPreference0 = CogPathPreference.CogRelative
+			var PathPreference1 = CogPathPreference.SpaceRelative
+			var PathPreference2 = CogPathPreference.Absolute
+		}
+	}
 	Hierarchy 
 	{
-		Cog [Id:0x5ada77356132e289]
-		{
-			var Name = "Pivot"
-			Transform 
-			{
-				var Translation = Real3{0, 1, 0}
-				var Scale = Real3{1, 1, 1}
-				var Rotation = Quaternion{0, 0, 0, 1}
-			}
-			SoundListener 
-			{
-				var Active = true
-			}
-			Orientation 
-			{
-				var GlobalUp = Real3{0, 1, 0}
-				var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-				var DefaultBases = OrientationBases.ForwardNegativeZUpY
-			}
-			SampleCameraControl 
-			{
-				var RightMouseToMove = false
-				var MouseSensitivity = 10
-			}
-			Hierarchy 
-			{
-				Cog [Id:0x5ada6d892d44b316]
-				{
-					var Name = "GameCamera"
-					Transform 
-					{
-						var Translation = Real3{0, 0, 6}
-						var Scale = Real3{1.00000024, 1, 1.00000024}
-						var Rotation = Quaternion{0, 0, 0, 1}
-					}
-					CameraViewport 
-					{
-						var RenderInEditor = false
-						var RenderInGame = true
-						var RenderOrder = 0
-						var CameraPath = CogPath
-						{
-							var Path = "."
-							var ErrorOnResolveToNull = false
-							var ErrorOnPathCantCompute = false
-							var ErrorOnDirectLinkFail = false
-							var UpdateCogOnPathChange = true
-							var UpdatePathOnCogChange = true
-							var UpdateCogOnInitialize = true
-							var ResolvedNullErrorOccurred = false
-							var Cog = 4294967293
-							var PathPreference0 = CogPathPreference.CogRelative
-							var PathPreference1 = CogPathPreference.SpaceRelative
-							var PathPreference2 = CogPathPreference.Absolute
-						}
-						var RendererPath = CogPath
-						{
-							var Path = ":/Renderer"
-							var ErrorOnResolveToNull = false
-							var ErrorOnPathCantCompute = false
-							var ErrorOnDirectLinkFail = false
-							var UpdateCogOnPathChange = true
-							var UpdatePathOnCogChange = true
-							var UpdateCogOnInitialize = true
-							var ResolvedNullErrorOccurred = false
-							var Cog = 4294967293
-							var PathPreference0 = CogPathPreference.CogRelative
-							var PathPreference1 = CogPathPreference.SpaceRelative
-							var PathPreference2 = CogPathPreference.Absolute
-						}
-						var ResolutionOrAspect = Integer2{1920, 1080}
-						var RenderToViewport = true
-						var ForwardViewportEvents = true
-						var ViewportScaling = ViewportScaling.Letterbox
-						var MarginColor = Real4{0, 0, 0, 1}
-						var NormalizedSize = Real2{1, 1}
-						var NormalizedOffset = Real2{0, 0}
-					}
-					Camera 
-					{
-						var NearPlane = 0.100000001
-						var FarPlane = 200
-						var PerspectiveMode = PerspectiveMode.Perspective
-						var FieldOfView = 60
-						var Size = 20
-					}
-					SoundListener 
-					{
-						var Active = true
-					}
-					Orientation 
-					{
-						var GlobalUp = Real3{0, 1, 0}
-						var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-						var DefaultBases = OrientationBases.ForwardNegativeZUpY
-					}
-				}
-			}
-		}
 		Cog [Id:0x5ada77356132e301]
 		{
 			var Name = "Model"
@@ -187,6 +108,9 @@ Cog
 				var GroupSortValue = 0
 				var Material = "583afb5e7bf75e18:ZeroMaterial"
 				var Mesh = "4de0354322b3572e:Cylinder"
+			}
+			Hierarchy 
+			{
 			}
 		}
 	}

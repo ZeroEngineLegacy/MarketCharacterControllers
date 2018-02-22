@@ -147,7 +147,7 @@ Level
 		ShadowRenderer 
 		{
 			var ResolutionValue = ShadowResolution.High
-			var NormalOffsetBias = 0.100000001
+			var NormalOffsetBias = 0.200000003
 		}
 		Model 
 		{
@@ -175,9 +175,9 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{69.0331421, 17.0926666, -16.9872932}
+			var Translation = Real3{-14.3638639, 9.44794464, -55.8987999}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0837059617, 0.742384851, 0.0944435522, 0.65798068}
+			var Rotation = Quaternion{0.0355454125, 0.9640674, 0.171726659, -0.199550837}
 		}
 		CameraViewport 
 		{
@@ -234,14 +234,88 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 73.7989807
-			var VerticalAngle = 0.253073424
-			var HorizontalAngle = 29.7247295
-			var LookTarget = Real3{-1.89791107, -1.38517249, -8.40563965}
+			var LookDistance = 25.91366
+			var VerticalAngle = 0.352556705
+			var HorizontalAngle = 27.8661213
+			var LookTarget = Real3{-4.70965195, 0.5, -33.5773239}
 			var MoveSensitivity = 1
 		}
 	}
 	Cog [ContextId:5]
+	{
+		var Name = "GameCamera"
+		Transform 
+		{
+			var Translation = Real3{-1.9229207, 7.02642345, -54.4341011}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 1, 0, -4.37113883e-08}
+		}
+		SelectionIcon 
+		{
+			var Visible = true
+			var VisibilityEvents = true
+			var Material = "56581e2bb81777be:DebugDrawOnTop"
+			var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
+			var ViewScale = 1
+			var OverrideSelections = true
+		}
+		CameraViewport 
+		{
+			var RenderInEditor = false
+			var RenderInGame = true
+			var RenderOrder = 0
+			var CameraPath = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var Cog = 5
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var RendererPath = CogPath
+			{
+				var Path = ":/Renderer"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var Cog = 2
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = true
+			var ViewportScaling = ViewportScaling.Letterbox
+			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
+		}
+		Camera 
+		{
+			var NearPlane = 0.100000001
+			var FarPlane = 200
+			var PerspectiveMode = PerspectiveMode.Perspective
+			var FieldOfView = 60
+			var Size = 20
+		}
+		SoundListener 
+		{
+			var Active = true
+		}
+	}
+	Cog [ContextId:6]
 	{
 		var Name = "LevelGeometry"
 		Transform 
@@ -252,7 +326,7 @@ Level
 		}
 		Hierarchy 
 		{
-			Cog [Id:0x5ada773361a55f4d][ContextId:6]
+			Cog [Id:0x5ada773361a55f4d][ContextId:7]
 			{
 				var Name = "Cube"
 				Transform 
@@ -283,7 +357,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f50][ContextId:7]
+			Cog [Id:0x5ada773361a55f50][ContextId:8]
 			{
 				var Name = "Cube"
 				Transform 
@@ -314,7 +388,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f52][ContextId:8]
+			Cog [Id:0x5ada773361a55f52][ContextId:9]
 			{
 				var Name = "Cube"
 				Transform 
@@ -345,7 +419,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f53][ContextId:9]
+			Cog [Id:0x5ada773361a55f53][ContextId:10]
 			{
 				var Name = "Cube"
 				Transform 
@@ -376,7 +450,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f55][ContextId:10]
+			Cog [Id:0x5ada773361a55f55][ContextId:11]
 			{
 				var Name = "Cube"
 				Transform 
@@ -430,7 +504,7 @@ Level
 					var PlayMode = AnimationPlayMode.Pingpong
 				}
 			}
-			Cog [Id:0x5ada773361a55f57][ContextId:11]
+			Cog [Id:0x5ada773361a55f57][ContextId:12]
 			{
 				var Name = "Cube"
 				Transform 
@@ -484,7 +558,7 @@ Level
 					var PlayMode = AnimationPlayMode.Pingpong
 				}
 			}
-			Cog [Id:0x5ada773361a55f59][ContextId:12]
+			Cog [Id:0x5ada773361a55f59][ContextId:13]
 			{
 				var Name = "Cube"
 				Transform 
@@ -515,7 +589,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f5a][ContextId:13]
+			Cog [Id:0x5ada773361a55f5a][ContextId:14]
 			{
 				var Name = "Cube"
 				Transform 
@@ -546,7 +620,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f5c][ContextId:14]
+			Cog [Id:0x5ada773361a55f5c][ContextId:15]
 			{
 				var Name = "Cube"
 				Transform 
@@ -577,7 +651,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f5e][ContextId:15]
+			Cog [Id:0x5ada773361a55f5e][ContextId:16]
 			{
 				var Name = "Cube"
 				Transform 
@@ -608,7 +682,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f5f][ContextId:16]
+			Cog [Id:0x5ada773361a55f5f][ContextId:17]
 			{
 				var Name = "Cube"
 				Transform 
@@ -639,7 +713,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f61][ContextId:17]
+			Cog [Id:0x5ada773361a55f61][ContextId:18]
 			{
 				var Name = "Cube"
 				Transform 
@@ -670,7 +744,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f62][ContextId:18]
+			Cog [Id:0x5ada773361a55f62][ContextId:19]
 			{
 				var Name = "Cube"
 				Transform 
@@ -701,7 +775,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f64][ContextId:19]
+			Cog [Id:0x5ada773361a55f64][ContextId:20]
 			{
 				var Name = "Cube"
 				Transform 
@@ -732,7 +806,7 @@ Level
 					var HalfSize = Real3{0.5, 0.5, 0.5}
 				}
 			}
-			Cog [Id:0x5ada773361a55f66][ContextId:20]
+			Cog [Id:0x5ada773361a55f66][ContextId:21]
 			{
 				var Name = "Cube"
 				Transform 
@@ -765,7 +839,7 @@ Level
 			}
 		}
 	}
-	Cog [ContextId:21]
+	Cog [ContextId:22]
 	{
 		var Name = "Cube"
 		Transform 
@@ -806,7 +880,7 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog [ContextId:22]
+	Cog [ContextId:23]
 	{
 		var Name = "Cube"
 		Transform 
@@ -847,7 +921,7 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog [ContextId:23]
+	Cog [ContextId:24]
 	{
 		var Name = "Cube"
 		Transform 
@@ -888,7 +962,7 @@ Level
 			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
-	Cog [ContextId:24]
+	Cog [ContextId:25]
 	{
 		var Name = "Sphere"
 		Transform 
@@ -929,7 +1003,7 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog [ContextId:25]
+	Cog [ContextId:26]
 	{
 		var Name = "Sphere2"
 		Transform 
@@ -970,7 +1044,7 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog [ContextId:26]
+	Cog [ContextId:27]
 	{
 		var Name = "Sphere"
 		Transform 
@@ -1011,7 +1085,7 @@ Level
 			var Radius = 0.5
 		}
 	}
-	Cog [ContextId:27]
+	Cog [ContextId:28]
 	{
 		var Name = "Wedge"
 		Transform 
@@ -1052,12 +1126,12 @@ Level
 			var ConvexMesh = "5828ac1063879136:Wedge"
 		}
 	}
-	Cog [InheritId:"592e7570a263596b:SweptPlayer3D"][ContextId:28]
+	Cog [InheritId:"592e7570a263596b:SweptPlayer3D"][ContextId:29]
 	{
 		Transform 
 		{
 			var Translation = Real3{-4.70397186, 2.11192703, -41.1356697}
-			var Rotation = Quaternion{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+			var Rotation = Quaternion{-0, 1, -0, -4.37113883e-08}
 			var Scale = Real3{1, 1, 1}
 		}
 	}
