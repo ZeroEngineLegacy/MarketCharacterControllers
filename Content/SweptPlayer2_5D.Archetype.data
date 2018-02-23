@@ -12,20 +12,11 @@ Cog
 	{
 		var Velocity = Real3{0, 0, 0}
 		var AngularVelocity = Real3{0, 0, 0}
-		var DynamicState = RigidBodyDynamicState.Dynamic
+		var DynamicState = RigidBodyDynamicState.Kinematic
 		var AllowSleep = false
 		var Asleep = false
 		var RotationLocked = true
 		var Mode2D = Mode2DStates.InheritFromSpace
-	}
-	GravityEffect 
-	{
-		var Active = true
-		var WakeUpOnChange = true
-		var DebugDrawEffect = true
-		var LocalSpaceDirection = true
-		var Strength = 10
-		var Direction = Real3{0, -1, 0}
 	}
 	SphereCollider 
 	{
