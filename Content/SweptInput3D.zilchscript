@@ -35,6 +35,10 @@ class SweptInput3D : ZilchComponent
     {
       this.SweptController.Jump();
     }
+    else if (Zero.Keyboard.KeyIsReleased(this.JumpKey))
+    {
+      this.SweptController.JumpCancel();
+    }
     
     this.SweptController.Update(movement, event.Dt);
   }
