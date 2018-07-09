@@ -30,7 +30,7 @@ Cog
 	SweptController 
 	{
 		var WorldUp = Real3{0, 1, 0}
-		var LockZAxis = false
+		var LockZAxis = true
 		var ForwardEvents = false
 		var Gravity = 10
 		var JumpSpeed = 5
